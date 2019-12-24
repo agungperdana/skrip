@@ -29,3 +29,7 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
 	compileOnly('org.projectlombok:lombok')
 }
+
+springBoot {
+        mainClassName = "com.kratonsolution.skrip.leon.EntryPoint"
+    }
