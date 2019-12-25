@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
   <head>
-    <title>Photon</title>
-
+    <title>COSIN APP V-1.0</title>
     <link rel="stylesheet" data-th-href="@{/photon/dist/css/photon.min.css}"/>
-
   </head>
   <body>
     <div class="window">
 
-      <!-- .toolbar-header sits at the top of your app -->
       <header class="toolbar toolbar-header">
         <h1 class="title">APLIKASI CERDAS DIAGNOSA KERUSAKAN PERANGKAT ELEKTRONIK</h1>
       </header>
@@ -26,11 +23,11 @@
               </span>
               <span class="nav-group-item">
                 <span class="icon icon-light-up"></span>
-                <a data-th-href="@{/prepare-diagnosa}">Diagnosa</a>
+                <a style="cursor: pointer;" data-th-href="@{/prepare-diagnosa}">Diagnosa</a>
               </span>
               <span class="nav-group-item">
                 <span class="icon icon-download"></span>
-                <a data-th-href="@{/prepare-bantuan}">Bantuan</a>
+                <a style="cursor: pointer;" data-th-href="@{/prepare-bantuan}">Bantuan</a>
               </span>
             </nav>
           </div>
@@ -40,7 +37,7 @@
 				</br></br>
 				Selamat datang.</br>
 				Aplikasi sistem pakar diagnosa kerusakan perangkat elektronik versi 1.0</br></br>
-				<button data-th-action="@{/prepare-diagnosa}">Mulai Diagnosa</button>
+				<a style="cursor: pointer;" data-th-href="@{/prepare-diagnosa}">Mulai Diagnosa</a>
 			</div>
           </div>
         </div>

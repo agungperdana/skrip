@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>COSIN APP V-1.0</title>
+    <link rel="stylesheet" data-th-href="@{/photon/dist/css/photon.min.css}"/>
+  </head>
+  <body>
+    <div class="window">
+      <header class="toolbar toolbar-header">
+        <h1 class="title">APLIKASI CERDAS DIAGNOSA KERUSAKAN PERANGKAT ELEKTRONIK</h1>
+      </header>
+
+      <div class="window-content">
+        <div class="pane-group">
+          <div class="pane pane-sm sidebar">
+            <nav class="nav-group">
+              <h5 class="nav-group-title">Navigasi Pengguna</h5>
+              <span class="nav-group-item">
+                <span class="icon icon-home"></span>
+                Beranda
+              </span>
+              <span class="nav-group-item active">
+                <span class="icon icon-light-up"></span>
+                <a style="cursor: pointer;" data-th-href="@{/prepare-diagnosa}">Diagnosa</a>
+              </span>
+              <span class="nav-group-item">
+                <span class="icon icon-download"></span>
+                <a style="cursor: pointer;" data-th-href="@{/prepare-bantuan}">Bantuan</a>
+              </span>
+            </nav>
+          </div>
+   
+          <div class="pane">
+          	<header class="toolbar toolbar-header">
+  				<h1 class="title">Lengkapi Pertanyaan dibawah ini:</h1>
+			</header>
+			<form method="POST" data-th-action="@{/submut-diagnosa}">
+			<table class="table-striped" style="widh:75%;">
+			<tbody>
+			<tr>
+				<td width="5%">1</td>
+				<td>Tlp mati tidak ada nada ?</td>
+				<td width="15%">
+					<input name="q1" value="1" type="radio" />&nbsp;Ya 
+					&nbsp;<input name="q1" value="0" type="radio" checked="checked"/>&nbsp;Tidak 
+				</td>
+			</tr>
+			<tr>
+				<td width="5%">2</td>
+				<td>Splitter tidak berfungsi ?</td>
+				<td width="15%">
+					<input name="q2" value="1" type="radio" />&nbsp;Ya 
+					&nbsp;<input name="q2" value="0" type="radio" checked="checked"/>&nbsp;Tidak 
+				</td>
+			</tr>
+			<tr>
+				<td width="5%">3</td>
+				<td>Kabel UTP TLP rusak ?</td>
+				<td width="15%">
+					<input name="q3" value="1" type="radio" />&nbsp;Ya 
+					&nbsp;<input name="q3" value="0" type="radio" checked="checked"/>&nbsp;Tidak 
+				</td>
+			</tr>
+			<tr>
+				<td width="5%">4</td>
+				<td>Connector RJ 11 tidak berfungsi ?</td>
+				<td width="15%">
+					<input name="q4" value="1" type="radio" />&nbsp;Ya 
+					&nbsp;<input name="q4" value="0" type="radio" checked="checked"/>&nbsp;Tidak 
+				</td>
+			</tr>
+			<tr>
+				<td width="5%">5</td>
+				<td>Nada TLP ngetut-tut ?</td>
+				<td width="15%">
+					<input name="q5" value="1" type="radio" />&nbsp;Ya 
+					&nbsp;<input name="q5" value="0" type="radio" checked="checked"/>&nbsp;Tidak 
+				</td>
+			</tr>
+			<tr>
+				<td width="5%">6</td>
+				<td>Nada TLP nada panjang ?</td>
+				<td width="15%">
+					<input name="q6" value="1" type="radio" />&nbsp;Ya 
+					&nbsp;<input name="q6" value="0" type="radio" checked="checked"/>&nbsp;Tidak 
+				</td>
+			</tr>
+			<tr>
+				<td width="5%">7</td>
+				<td>Internet tidak bisa connect ?</td>
+				<td width="15%">
+					<input name="q7" value="1" type="radio" />&nbsp;Ya 
+					&nbsp;<input name="q7" value="0" type="radio" checked="checked"/>&nbsp;Tidak 
+				</td>
+			</tr>
+			<tr>
+				<td width="5%">8</td>
+				<td>Pc tidak dapat ip ?</td>
+				<td width="15%">
+					<input name="q8" value="1" type="radio" />&nbsp;Ya 
+					&nbsp;<input name="q8" value="0" type="radio" checked="checked"/>&nbsp;Tidak 
+				</td>
+			</tr>
+			<tr>
+				<td width="5%">9</td>
+				<td>Tidak ada tunggakan pembayaran ?</td>
+				<td width="15%">
+					<input name="q9" value="1" type="radio" />&nbsp;Ya 
+					&nbsp;<input name="q9" value="0" type="radio" checked="checked"/>&nbsp;Tidak 
+				</td>
+			</tr>
+			<tr>
+				<td width="5%">10</td>
+				<td>Koneksi lambat pc pelanggan dishare ?</td>
+				<td width="15%">
+					<input name="q10" value="1" type="radio" />&nbsp;Ya 
+					&nbsp;<input name="q10" value="0" type="radio" checked="checked"/>&nbsp;Tidak 
+				</td>
+			</tr>
+			<tr>
+				<td width="5%">11</td>
+				<td>Koneksi putus-putus ?</td>
+				<td width="15%">
+					<input name="q11" value="1" type="radio" />&nbsp;Ya 
+					&nbsp;<input name="q11" value="0" type="radio" checked="checked"/>&nbsp;Tidak 
+				</td>
+			</tr>
+			<tr>
+				<td width="5%">12</td>
+				<td>Tidak bisa browsing ?</td>
+				<td width="15%">
+					<input name="q12" value="1" type="radio" />&nbsp;Ya 
+					&nbsp;<input name="q12" value="0" type="radio" checked="checked"/>&nbsp;Tidak 
+				</td>
+			</tr>
+			<tr>
+				<td width="5%">13</td>
+				<td>Ip pc sesuai dengan ip modem ?</td>
+				<td width="15%">
+					<input name="q13" value="1" type="radio" />&nbsp;Ya 
+					&nbsp;<input name="q13" value="0" type="radio" checked="checked"/>&nbsp;Tidak 
+				</td>
+			</tr>
+			<tr>
+				<td width="5%">14</td>
+				<td>Bandwidth tidak sesuai paket ?</td>
+				<td width="15%">
+					<input name="q14" value="1" type="radio" />&nbsp;Ya 
+					&nbsp;<input name="q14" value="0" type="radio" checked="checked"/>&nbsp;Tidak 
+				</td>
+			</tr>
+			<tr>
+				<td width="5%">15</td>
+				<td>Konfigurasi setting hilang ?</td>
+				<td width="15%">
+					<input name="q15" value="1" type="radio" />&nbsp;Ya 
+					&nbsp;<input name="q15" value="0" type="radio" checked="checked"/>&nbsp;Tidak 
+				</td>
+			</tr>
+			<tr>
+				<td width="5%">16</td>
+				<td>Lampu indikator PON mati ?</td>
+				<td width="15%">
+					<input name="q16" value="1" type="radio" />&nbsp;Ya 
+					&nbsp;<input name="q16" value="0" type="radio" checked="checked"/>&nbsp;Tidak 
+				</td>
+			</tr>
+			<tr>
+				<td width="5%">17</td>
+				<td>Lampu indicator LOS merah ?</td>
+				<td width="15%">
+					<input name="q17" value="1" type="radio" />&nbsp;Ya 
+					&nbsp;<input name="q17" value="0" type="radio" checked="checked"/>&nbsp;Tidak 
+				</td>
+			</tr>
+			<tr>
+				<td width="5%">18</td>
+				<td>Fast connector tidak berfungsi ?</td>
+				<td width="15%">
+					<input name="q18" value="1" type="radio" />&nbsp;Ya 
+					&nbsp;<input name="q18" value="0" type="radio" checked="checked"/>&nbsp;Tidak 
+				</td>
+			</tr>
+			<tr>
+				<td width="5%">19</td>
+				<td>Lampu indikator power mati ?</td>
+				<td width="15%">
+					<input name="q19" value="1" type="radio" />&nbsp;Ya 
+					&nbsp;<input name="q19" value="0" type="radio" checked="checked"/>&nbsp;Tidak 
+				</td>
+			</tr>
+			<tr>
+				<td width="5%">20</td>
+				<td>Tidak bias membuka web tertentu ?</td>
+				<td width="15%">
+					<input name="q20" value="1" type="radio" />&nbsp;Ya 
+					&nbsp;<input name="q20" value="0" type="radio" checked="checked"/>&nbsp;Tidak 
+				</td>
+			</tr>
+			<tr>
+				<td width="5%">21</td>
+				<td>Modem ONT tidak menyala ?</td>
+				<td width="15%">
+					<input name="q21" value="1" type="radio" />&nbsp;Ya 
+					&nbsp;<input name="q21" value="0" type="radio" checked="checked"/>&nbsp;Tidak 
+				</td>
+			</tr>
+			<tr>
+				<td width="5%">22</td>
+				<td>Gambar Useetv blank ?</td>
+				<td width="15%">
+					<input name="q22" value="1" type="radio" />&nbsp;Ya 
+					&nbsp;<input name="q22" value="0" type="radio" checked="checked"/>&nbsp;Tidak 
+				</td>
+			</tr>
+			<tr>
+				<td width="5%">23</td>
+				<td>Konfigurasi tidak sesuai ?</td>
+				<td width="15%">
+					<input name="q23" value="1" type="radio" />&nbsp;Ya 
+					&nbsp;<input name="q23" value="0" type="radio" checked="checked"/>&nbsp;Tidak 
+				</td>
+			</tr>
+			<tr>
+				<td width="5%">24</td>
+				<td>Error 1302 ?</td>
+				<td width="15%">
+					<input name="q24" value="1" type="radio" />&nbsp;Ya 
+					&nbsp;<input name="q24" value="0" type="radio" checked="checked"/>&nbsp;Tidak 
+				</td>
+			</tr>
+			<tr>
+				<td width="5%">25</td>
+				<td>Koneksi ke EPG gagal ?</td>
+				<td width="15%">
+					<input name="q25" value="1" type="radio" />&nbsp;Ya 
+					&nbsp;<input name="q25" value="0" type="radio" checked="checked"/>&nbsp;Tidak 
+				</td>
+			</tr>
+			<tr>
+				<td width="5%">26</td>
+				<td>Error 1305 ?</td>
+				<td width="15%">
+					<input name="q26" value="1" type="radio" />&nbsp;Ya 
+					&nbsp;<input name="q26" value="0" type="radio" checked="checked"/>&nbsp;Tidak 
+				</td>
+			</tr>
+			<tr>
+				<td width="5%">27</td>
+				<td>Error 1901 ?</td>
+				<td width="15%">
+					<input name="q27" value="1" type="radio" />&nbsp;Ya 
+					&nbsp;<input name="q27" value="0" type="radio" checked="checked"/>&nbsp;Tidak 
+				</td>
+			</tr>
+			<tr>
+				<td width="5%">28</td>
+				<td>Error 4514 ?</td>
+				<td width="15%">
+					<input name="q28" value="1" type="radio" />&nbsp;Ya 
+					&nbsp;<input name="q28" value="0" type="radio" checked="checked"/>&nbsp;Tidak 
+				</td>
+			</tr>
+			<tr>
+				<td width="5%">29</td>
+				<td>Channel multicast mengalami data timeout ?</td>
+				<td width="15%">
+					<input name="q29" value="1" type="radio" />&nbsp;Ya 
+					&nbsp;<input name="q29" value="0" type="radio" checked="checked"/>&nbsp;Tidak 
+				</td>
+			</tr>
+			<tr>
+				<td width="5%">30</td>
+				<td>Gambar Useetv putus-putus ?</td>
+				<td width="15%">
+					<input name="q30" value="1" type="radio" />&nbsp;Ya 
+					&nbsp;<input name="q30" value="0" type="radio" checked="checked"/>&nbsp;Tidak 
+				</td>
+			</tr>
+			<tr>
+				<td width="5%">31</td>
+				<td>Lampu indikator ?</td>
+				<td width="15%">
+					<input name="q31" value="1" type="radio" />&nbsp;Ya 
+					&nbsp;<input name="q31" value="0" type="radio" checked="checked"/>&nbsp;Tidak 
+				</td>
+			</tr>
+			</tbody>
+			</table>
+			<footer class="toolbar toolbar-footer">
+  				<div class="toolbar-actions">
+    				<button type="submit" class="btn btn-primary pull-right">
+      					Cari solusi
+    				</button>
+  				</div>
+			</footer>
+			</form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
