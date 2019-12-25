@@ -1,0 +1,2 @@
+# skrip
+small aplication
