@@ -17,7 +17,7 @@
               <h5 class="nav-group-title">Navigasi Pengguna</h5>
               <span class="nav-group-item">
                 <span class="icon icon-home"></span>
-                Beranda
+                <a style="cursor: pointer;" data-th-href="@{/}">Beranda</a>
               </span>
               <span class="nav-group-item active">
                 <span class="icon icon-light-up"></span>
@@ -34,7 +34,7 @@
           	<header class="toolbar toolbar-header">
   				<h1 class="title">Lengkapi Pertanyaan dibawah ini:</h1>
 			</header>
-			<form method="POST" data-th-action="@{/submut-diagnosa}">
+			<form method="POST" data-th-action="@{/do-diagnosa}">
 			<table class="table-striped" style="widh:75%;">
 			<tbody>
 			<tr>
