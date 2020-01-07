@@ -3,28 +3,31 @@
  */
 package com.kratonsolution.skrip.leon.view;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.kratonsolution.skrip.leon.model.Diagnosa;
+
 import io.jsondb.JsonDBTemplate;
 
 /**
- * @author agung
+ * @author Leoni
  *
  */
 @Controller
 public class DiagnosaController {
 	
-	private JsonDBTemplate db = new JsonDBTemplate("diagnosadb", "com.kratonsolution.skrip.leon.view");
+	@Autowired
+	private JsonDBTemplate db;
 	
 	private Cosine cosine = new Cosine();
 	

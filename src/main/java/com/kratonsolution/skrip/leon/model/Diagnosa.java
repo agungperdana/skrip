@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.kratonsolution.skrip.leon.view;
+package com.kratonsolution.skrip.leon.model;
 
 import java.util.ArrayList;
 import java.util.List;
