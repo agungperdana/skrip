@@ -21,6 +21,8 @@ import io.jsondb.JsonDBTemplate;
 @Controller
 public class GejalaController {
 
+	private static final String HOME = "redirect:/admin/gejala-home";
+	
 	@Autowired
 	private JsonDBTemplate db;
 	
@@ -45,6 +47,37 @@ public class GejalaController {
 		
 		db.insert(gejala);
 		
-		return "redirect:/admin/gejala-home";
+		return HOME;
+	}
+	
+	@GetMapping("/admin/gejala-preedit")
+	public String preedit(Model model, @RequestParam String id) {
+		
+		model.addAttribute("gejala", db.findById(id, Gejala.class));
+		return "gejala-edit";
+	}
+	
+	@PostMapping("/admin/gejala-edit")
+	public String edit(@RequestParam("id") String id, @RequestParam("note") String note) {
+		
+		Gejala gejala = db.findById(id, Gejala.class);
+		if(gejala != null) {
+			
+			gejala.setNote(note);
+			db.save(gejala, Gejala.class);
+		}
+		
+		return HOME;
+	}
+	
+	@GetMapping("/admin/gejala-delete")
+	public String delete(@RequestParam String id) {
+		
+		Gejala gejala = db.findById(id, Gejala.class);
+		if(gejala != null) {
+			db.remove(gejala, Gejala.class);
+		}
+		
+		return HOME;
 	}
 }

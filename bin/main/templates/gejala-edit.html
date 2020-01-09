@@ -37,36 +37,26 @@
           </div>
 
           <div class="pane">
+          	<form data-th-action="@{/admin/gejala-edit?id=}+${gejala.id}" method="POST">
           	<div class="toolbar-actions">
-          		<button class="btn btn-positive" onclick="javascript:window.location='/admin/gejala-preadd'">
+          		<button class="btn btn-negative" type="reset" onclick="javascript:window.location='/admin/gejala-home'">
+        			<span class="icon icon-cancel-circled"></span>
+        			Batalkan
+      			</button>
+      			<button type="submit" class="btn btn-positive">
         			<span class="icon icon-plus-circled"></span>
-        			Tambah data Gejala
+        			Simpan
       			</button>
           	</div>
-			<table class="table-striped">
-              <thead>
-                <tr>
-                  <th colspan="2" align="center">&nbsp;</th>
-                  <th width="90%" align="left">Keterangan</th>
-                </tr>
-              </thead>
+			<table>
               <tbody>
-                <tr data-th-each="gejala:${gejalas}">
-                	<td>
-                		<a style="cursor: pointer;" data-th-href="@{/admin/gejala-preedit?id=}+${gejala.id}">
-                			<span class="icon icon-plus-circled"></span>Ubah
-                		</a>
-                	</td>
-                  	<td>
-                  		<a style="cursor: pointer;" data-th-href="@{/admin/gejala-delete?id=}+${gejala.id}">
-                  		<span class="icon icon-cancel-circled"></span>
-                  		Hapus
-                  		</a>
-                  	</td>	
-                  	<td data-th-text="${gejala.note}"/>
-                </tr>
+              <tr>
+              	<td>Keterangan :</td>
+              	<td width="85%"><input name="note" width="75%" data-th-value="${gejala.note}"/></td>
+              </tr>
                </tbody>
               </table>
+              </form>
           </div>
         </div>
       </div>
