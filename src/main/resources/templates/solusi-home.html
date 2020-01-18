@@ -8,7 +8,7 @@
     <div class="window">
 
       <header class="toolbar toolbar-header">
-        <h1 class="title">PENGATURAN GEJALA</h1>
+        <h1 class="title">PENGATURAN DATA SOLUSI</h1>
       </header>
 
       <!-- Your app's content goes inside .window-content -->
@@ -21,11 +21,11 @@
                 <span class="icon icon-home"></span>
                 <a style="cursor: pointer;" data-th-href="@{/admin/gangguan-home}">Gangguan</a>
               </span>
-              <span class="nav-group-item active">
+              <span class="nav-group-item ">
                 <span class="icon icon-light-up"></span>
                 <a style="cursor: pointer;" data-th-href="@{/admin/gejala-home}">Gejala</a>
               </span>
-              <span class="nav-group-item">
+              <span class="nav-group-item active">
                 <span class="icon icon-download"></span>
                 <a style="cursor: pointer;" data-th-href="@{/admin/solusi-home}">Solusi</a>
               </span>
@@ -42,9 +42,9 @@
 
           <div class="pane">
           	<div class="toolbar-actions">
-          		<button class="btn btn-positive" onclick="javascript:window.location='/admin/gejala-preadd'">
+          		<button class="btn btn-positive" onclick="javascript:window.location='/admin/solusi-preadd'">
         			<span class="icon icon-plus-circled"></span>
-        			Tambah data Gejala
+        			Tambah data Solusi
       			</button>
           	</div>
 			<table class="table-striped">
@@ -55,19 +55,19 @@
                 </tr>
               </thead>
               <tbody>
-                <tr data-th-each="gejala:${gejalas}">
+                <tr data-th-each="solusi:${solusis}">
                 	<td>
-                		<a style="cursor: pointer;" data-th-href="@{/admin/gejala-preedit?id=}+${gejala.id}">
+                		<a style="cursor: pointer;" data-th-href="@{/admin/solusi-preedit?id=}+${solusi.id}">
                 			<span class="icon icon-plus-circled"></span>Ubah
                 		</a>
                 	</td>
                   	<td>
-                  		<a style="cursor: pointer;" data-th-href="@{/admin/gejala-delete?id=}+${gejala.id}">
+                  		<a style="cursor: pointer;" data-th-href="@{/admin/solusi-delete?id=}+${solusi.id}">
                   		<span class="icon icon-cancel-circled"></span>
                   		Hapus
                   		</a>
                   	</td>	
-                  	<td data-th-text="${gejala.note}"/>
+                  	<td data-th-text="${solusi.note}"/>
                 </tr>
                </tbody>
               </table>
