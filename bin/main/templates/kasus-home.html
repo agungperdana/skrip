@@ -42,9 +42,9 @@
 
           <div class="pane">
           	<div class="toolbar-actions">
-          		<button class="btn btn-positive" onclick="javascript:window.location='/admin/solusi-preadd'">
+          		<button class="btn btn-positive" onclick="javascript:window.location='/admin/kasus-preadd'">
         			<span class="icon icon-plus-circled"></span>
-        			Tambah data Solusi
+        			Tambah data KASUS
       			</button>
           	</div>
 			<table class="table-striped">
@@ -58,28 +58,34 @@
                 </tr>
               </thead>
               <tbody>
-                <tr data-th-each="solusi:${solusis}">
-                	<td>
-                		<a style="cursor: pointer;" data-th-href="@{/admin/solusi-preedit?id=}+${solusi.id}">
+                <tr data-th-each="kasus:${kasuses}">
+                	<td valign="top">
+                		<a style="cursor: pointer;" data-th-href="@{/admin/kasus-preedit?id=}+${kasus.id}">
                 			<span class="icon icon-plus-circled"></span>Ubah
                 		</a>
                 	</td>
-                  	<td>
-                  		<a style="cursor: pointer;" data-th-href="@{/admin/solusi-delete?id=}+${solusi.id}">
+                  	<td valign="top">
+                  		<a style="cursor: pointer;" data-th-href="@{/admin/kasus-delete?id=}+${kasus.id}">
                   		<span class="icon icon-cancel-circled"></span>
                   		Hapus
                   		</a>
                   	</td>	
-                  	<td data-th-text="${solusi.bit}"/>
+                  	<td valign="top" data-th-text="${kasus.bit}"/>
                   	<td>
                   		<ul data-th-each="gejala:${kasus.gejalas}">
-                  			<data-th-block="${gejala.enabled}">
-                  				<li data-th-text="${gejala.gejalaNote}"/>
-                  			</data-th-block>
+                  			<li data-th-if="${gejala.enabled}" data-th-text="${gejala.gejalaNote}"/>
                   		</ul>
                   	</td>
-                  	<td></td>
-                  	<td></td>
+                  	<td>
+                  		<ul data-th-each="gangguan:${kasus.gangguans}">
+                  			<li data-th-if="${gangguan.enabled}" data-th-text="${gangguan.gangguanNote}"/>
+                  		</ul>
+                  	</td>
+                  	<td>
+                  		<ul data-th-each="solusi:${kasus.solutions}">
+                  			<li data-th-if="${solusi.enabled}" data-th-text="${solusi.solusiNote}"/>
+                  		</ul>
+                  	</td>
                 </tr>
                </tbody>
               </table>

@@ -26,8 +26,9 @@ public class KasusController {
 	private JsonDBTemplate db;
 
 	@GetMapping("/admin/kasus-home")
-	public String home() {
+	public String home(Model model) {
 
+		model.addAttribute("kasuses", db.findAll(Kasus.class));
 		return "kasus-home";
 	}
 
@@ -36,7 +37,7 @@ public class KasusController {
 
 		model.addAttribute("gangguans", db.findAll(Gangguan.class));
 		model.addAttribute("gejalas", db.findAll(Gejala.class));
-		model.addAttribute("solusios", db.findAll(Solusi.class));
+		model.addAttribute("solusions", db.findAll(Solusi.class));
 
 		return "kasus-add";
 	}
@@ -55,7 +56,7 @@ public class KasusController {
 
 		Kasus kasus = new Kasus();
 		kasus.setBit(bit);
-
+		
 		for(int idx=0;idx<gangEN.length;idx++) {
 
 			GangguanKasus gk = new GangguanKasus();
@@ -86,7 +87,7 @@ public class KasusController {
 			kasus.getSolutions().add(gk);
 		}
 
-		db.save(kasus, Kasus.class);
+		db.insert(kasus);
 
 		return HOME;
 	}
@@ -149,6 +150,7 @@ public class KasusController {
 		return HOME;
 	}
 
+	@GetMapping("/admin/kasus-delete")
 	public String delete(@RequestParam String id) {
 
 		Kasus kasus = db.findById(id, Kasus.class);
