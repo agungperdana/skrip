@@ -3,6 +3,9 @@
  */
 package com.kratonsolution.skrip.leon.view.admin;
 
+import java.util.Comparator;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,7 +32,17 @@ public class GejalaController {
 	@GetMapping("/admin/gejala-home")
 	public String home(Model model) {
 		
-		model.addAttribute("gejalas", db.findAll(Gejala.class));
+		List<Gejala> gejalas = db.findAll(Gejala.class);
+		gejalas.sort(new Comparator<Gejala>() {
+
+			@Override
+			public int compare(Gejala o1, Gejala o2) {
+				
+				return o1.getIndex() - o2.getIndex();
+			}
+		});
+		
+		model.addAttribute("gejalas", gejalas);
 		
 		return "gejala-home";
 	}
@@ -40,9 +53,10 @@ public class GejalaController {
 	}
 	
 	@PostMapping("/admin/gejala-add")
-	public String add(@RequestParam String note) {
+	public String add(@RequestParam("note") String note, @RequestParam("index") int index) {
 		
 		Gejala gejala = new Gejala();
+		gejala.setIndex(index);
 		gejala.setNote(note);
 		
 		db.insert(gejala);
@@ -58,11 +72,12 @@ public class GejalaController {
 	}
 	
 	@PostMapping("/admin/gejala-edit")
-	public String edit(@RequestParam("id") String id, @RequestParam("note") String note) {
+	public String edit(@RequestParam("id") String id, @RequestParam("note") String note, @RequestParam("index") int index) {
 		
 		Gejala gejala = db.findById(id, Gejala.class);
 		if(gejala != null) {
 			
+			gejala.setIndex(index);
 			gejala.setNote(note);
 			db.save(gejala, Gejala.class);
 		}

@@ -4,7 +4,7 @@
 package com.kratonsolution.skrip.leon.model;
 
 /**
- * @author Agung
+ * @author Leoni
  *
  */
 public class GejalaKasus {
@@ -13,7 +13,7 @@ public class GejalaKasus {
 	
 	private String gejalaID;
 	
-	private String note;
+	private String gejalaNote;
 	
 	public GejalaKasus() {
 		// TODO Auto-generated constructor stub
@@ -35,11 +35,11 @@ public class GejalaKasus {
 		this.gejalaID = gejalaID;
 	}
 
-	public String getNote() {
-		return note;
+	public String getGejalaNote() {
+		return gejalaNote;
 	}
 
-	public void setNote(String note) {
-		this.note = note;
+	public void setGejalaNote(String gejalaNote) {
+		this.gejalaNote = gejalaNote;
 	}
 }

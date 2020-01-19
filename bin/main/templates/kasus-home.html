@@ -8,7 +8,7 @@
     <div class="window">
 
       <header class="toolbar toolbar-header">
-        <h1 class="title">PENGATURAN DATA GANGGUAN</h1>
+        <h1 class="title">PENGATURAN DATA KASUS</h1>
       </header>
 
       <!-- Your app's content goes inside .window-content -->
@@ -17,7 +17,7 @@
           <div class="pane pane-sm sidebar">
             <nav class="nav-group">
               <h5 class="nav-group-title">ADMINISTRASI</h5>
-              <span class="nav-group-item active">
+              <span class="nav-group-item">
                 <span class="icon icon-home"></span>
                 <a style="cursor: pointer;" data-th-href="@{/admin/gangguan-home}">Gangguan</a>
               </span>
@@ -25,7 +25,7 @@
                 <span class="icon icon-light-up"></span>
                 <a style="cursor: pointer;" data-th-href="@{/admin/gejala-home}">Gejala</a>
               </span>
-              <span class="nav-group-item">
+              <span class="nav-group-item active">
                 <span class="icon icon-download"></span>
                 <a style="cursor: pointer;" data-th-href="@{/admin/solusi-home}">Solusi</a>
               </span>
@@ -41,30 +41,48 @@
           </div>
 
           <div class="pane">
-          	<form data-th-action="@{/admin/gangguan-edit?id=}+${gangguan.id}" method="POST">
           	<div class="toolbar-actions">
-          		<button class="btn btn-negative" type="reset" onclick="javascript:window.location='/admin/gangguan-home'">
-        			<span class="icon icon-cancel-circled"></span>
-        			Batalkan
-      			</button>
-      			<button type="submit" class="btn btn-positive">
+          		<button class="btn btn-positive" onclick="javascript:window.location='/admin/solusi-preadd'">
         			<span class="icon icon-plus-circled"></span>
-        			Simpan
+        			Tambah data Solusi
       			</button>
           	</div>
-			<table>
+			<table class="table-striped">
+              <thead>
+                <tr>
+                  <th colspan="2" align="center">&nbsp;</th>
+                  <th width="10%" align="left">BIT</th>
+                  <th width="25%" align="left">GEJALA</th>
+                  <th width="25%" align="left">GANGGUAN</th>
+                  <th width="25%" align="left">SOLUSI</th>
+                </tr>
+              </thead>
               <tbody>
-              <tr>
-              	<td>No Urut :</td>
-              	<td width="85%"><input name="index" size="10" data-th-value="${gangguan.index}"/></td>
-              </tr>
-              <tr>
-              	<td>Keterangan :</td>
-              	<td width="85%"><input name="note" width="75%" data-th-value="${gangguan.note}"/></td>
-              </tr>
+                <tr data-th-each="solusi:${solusis}">
+                	<td>
+                		<a style="cursor: pointer;" data-th-href="@{/admin/solusi-preedit?id=}+${solusi.id}">
+                			<span class="icon icon-plus-circled"></span>Ubah
+                		</a>
+                	</td>
+                  	<td>
+                  		<a style="cursor: pointer;" data-th-href="@{/admin/solusi-delete?id=}+${solusi.id}">
+                  		<span class="icon icon-cancel-circled"></span>
+                  		Hapus
+                  		</a>
+                  	</td>	
+                  	<td data-th-text="${solusi.bit}"/>
+                  	<td>
+                  		<ul data-th-each="gejala:${kasus.gejalas}">
+                  			<data-th-block="${gejala.enabled}">
+                  				<li data-th-text="${gejala.gejalaNote}"/>
+                  			</data-th-block>
+                  		</ul>
+                  	</td>
+                  	<td></td>
+                  	<td></td>
+                </tr>
                </tbody>
               </table>
-              </form>
           </div>
         </div>
       </div>

@@ -15,9 +15,7 @@ public class Kasus {
 
 	private String bit;
 	
-	private String gangguanID;
-	
-	private String gangguanNote;
+	private Set<GangguanKasus> gangguans = new HashSet<>();
 	
 	private Set<GejalaKasus> gejalas = new HashSet<>();
 	
@@ -25,6 +23,14 @@ public class Kasus {
 	
 	public Kasus() {
 		// TODO Auto-generated constructor stub
+	}
+
+	public Set<GangguanKasus> getGangguans() {
+		return gangguans;
+	}
+
+	public void setGangguans(Set<GangguanKasus> gangguans) {
+		this.gangguans = gangguans;
 	}
 
 	public String getId() {

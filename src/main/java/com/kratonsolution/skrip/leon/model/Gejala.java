@@ -11,7 +11,21 @@ public class Gejala {
 	@Id
 	private String id = UUID.randomUUID().toString();
 
+	private int index;
+	
 	private String note;
+	
+	public Gejala() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public int getIndex() {
+		return index;
+	}
+
+	public void setIndex(int index) {
+		this.index = index;
+	}
 
 	public String getId() {
 		return id;
