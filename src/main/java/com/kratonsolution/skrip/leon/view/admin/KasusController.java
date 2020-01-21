@@ -54,40 +54,46 @@ public class KasusController {
 			@RequestParam("sol-id")String[] solID,
 			@RequestParam("sol-note")String[] solNOTE) {
 
-		Kasus kasus = new Kasus();
-		kasus.setBit(bit);
-		
-		for(int idx=0;idx<gangEN.length;idx++) {
+		Kasus kasus = null;
+		kasus = db.findById(bit, Kasus.class);
+		if(kasus == null) {
+			
+			kasus = new Kasus();
+			
+			kasus.setBit(bit);
+			
+			for(int idx=0;idx<gangEN.length;idx++) {
 
-			GangguanKasus gk = new GangguanKasus();
-			gk.setEnabled(gangEN[idx]);
-			gk.setGangguanID(gangID[idx]);
-			gk.setGangguanNote(gangNOTE[idx]);
+				GangguanKasus gk = new GangguanKasus();
+				gk.setEnabled(gangEN[idx]);
+				gk.setGangguanID(gangID[idx]);
+				gk.setGangguanNote(gangNOTE[idx]);
 
-			kasus.getGangguans().add(gk);
+				kasus.getGangguans().add(gk);
+			}
+
+			for(int idx=0;idx<gejEN.length;idx++) {
+
+				GejalaKasus gk = new GejalaKasus();
+				gk.setEnabled(gejEN[idx]);
+				gk.setGejalaID(gejID[idx]);
+				gk.setGejalaNote(gejNOTE[idx]);
+
+				kasus.getGejalas().add(gk);
+			}
+
+			for(int idx=0;idx<solEN.length;idx++) {
+
+				SolusiKasus gk = new SolusiKasus();
+				gk.setEnabled(solEN[idx]);
+				gk.setSolusiID(solID[idx]);
+				gk.setSolusiNote(solNOTE[idx]);
+
+				kasus.getSolutions().add(gk);
+			}
+
+			db.insert(kasus);
 		}
-
-		for(int idx=0;idx<gejEN.length;idx++) {
-
-			GejalaKasus gk = new GejalaKasus();
-			gk.setEnabled(gejEN[idx]);
-			gk.setGejalaID(gejID[idx]);
-			gk.setGejalaNote(gejNOTE[idx]);
-
-			kasus.getGejalas().add(gk);
-		}
-
-		for(int idx=0;idx<solEN.length;idx++) {
-
-			SolusiKasus gk = new SolusiKasus();
-			gk.setEnabled(solEN[idx]);
-			gk.setSolusiID(solID[idx]);
-			gk.setSolusiNote(solNOTE[idx]);
-
-			kasus.getSolutions().add(gk);
-		}
-
-		db.insert(kasus);
 
 		return HOME;
 	}

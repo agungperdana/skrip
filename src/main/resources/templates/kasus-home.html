@@ -60,12 +60,12 @@
               <tbody>
                 <tr data-th-each="kasus:${kasuses}">
                 	<td valign="top">
-                		<a style="cursor: pointer;" data-th-href="@{/admin/kasus-preedit?id=}+${kasus.id}">
+                		<a style="cursor: pointer;" data-th-href="@{/admin/kasus-preedit?id=}+${kasus.bit}">
                 			<span class="icon icon-plus-circled"></span>Ubah
                 		</a>
                 	</td>
                   	<td valign="top">
-                  		<a style="cursor: pointer;" data-th-href="@{/admin/kasus-delete?id=}+${kasus.id}">
+                  		<a style="cursor: pointer;" data-th-href="@{/admin/kasus-delete?id=}+${kasus.bit}">
                   		<span class="icon icon-cancel-circled"></span>
                   		Hapus
                   		</a>

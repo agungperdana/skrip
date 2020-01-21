@@ -6,8 +6,8 @@ import java.util.Set;
 import io.jsondb.annotation.Document;
 import io.jsondb.annotation.Id;
 
-@Document(schemaVersion= "1.0", collection = "kasus")
-public class Kasus {
+@Document(schemaVersion= "1.0", collection = "draft-kasus")
+public class DraftKasus {
 
 	@Id
 	private String bit;
@@ -18,7 +18,7 @@ public class Kasus {
 	
 	private Set<SolusiKasus> solutions = new HashSet<>();
 	
-	public Kasus() {
+	public DraftKasus() {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -52,5 +52,17 @@ public class Kasus {
 
 	public void setSolutions(Set<SolusiKasus> solutions) {
 		this.solutions = solutions;
+	}
+	
+	public Kasus toKasus() {
+		
+		Kasus kasus = new Kasus();
+		kasus.setBit(this.bit);
+		kasus.setGangguans(this.gangguans);
+		kasus.setGejalas(this.gejalas);
+		kasus.setSolutions(this.solutions);
+		
+		
+		return kasus;
 	}
 }

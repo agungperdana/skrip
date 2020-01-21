@@ -8,7 +8,7 @@
     <div class="window">
 
       <header class="toolbar toolbar-header">
-        <h1 class="title">PENGATURAN DATA KASUS</h1>
+        <h1 class="title">PENGATURAN DATA DRAFT KASUS</h1>
       </header>
 
       <!-- Your app's content goes inside .window-content -->
@@ -41,16 +41,10 @@
           </div>
 
           <div class="pane">
-          	<div class="toolbar-actions">
-          		<button class="btn btn-positive" onclick="javascript:window.location='/admin/kasus-preadd'">
-        			<span class="icon icon-plus-circled"></span>
-        			Tambah data KASUS
-      			</button>
-          	</div>
 			<table class="table-striped">
               <thead>
                 <tr>
-                  <th colspan="2" align="center">&nbsp;</th>
+                  <th colspan="3" align="center">&nbsp;</th>
                   <th width="10%" align="left">BIT</th>
                   <th width="25%" align="left">GEJALA</th>
                   <th width="25%" align="left">GANGGUAN</th>
@@ -60,12 +54,17 @@
               <tbody>
                 <tr data-th-each="kasus:${kasuses}">
                 	<td valign="top">
-                		<a style="cursor: pointer;" data-th-href="@{/admin/kasus-preedit?id=}+${kasus.bit}">
+                		<a style="cursor: pointer;" data-th-href="@{/admin/draft-kasus-convert?id=}+${kasus.bit}">
+                			<span class="icon icon-minus-circled"></span>Konversi
+                		</a>
+                	</td>
+                	<td valign="top">
+                		<a style="cursor: pointer;" data-th-href="@{/admin/draft-kasus-preedit?id=}+${kasus.bit}">
                 			<span class="icon icon-plus-circled"></span>Ubah
                 		</a>
                 	</td>
                   	<td valign="top">
-                  		<a style="cursor: pointer;" data-th-href="@{/admin/kasus-delete?id=}+${kasus.bit}">
+                  		<a style="cursor: pointer;" data-th-href="@{/admin/draft-kasus-delete?id=}+${kasus.bit}">
                   		<span class="icon icon-cancel-circled"></span>
                   		Hapus
                   		</a>

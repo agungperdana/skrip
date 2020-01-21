@@ -4,6 +4,7 @@
 package com.kratonsolution.skrip.leon.view;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -15,7 +16,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.kratonsolution.skrip.leon.model.Diagnosa;
+import com.kratonsolution.skrip.leon.model.DraftKasus;
+import com.kratonsolution.skrip.leon.model.Gangguan;
+import com.kratonsolution.skrip.leon.model.Gejala;
+import com.kratonsolution.skrip.leon.model.GejalaKasus;
+import com.kratonsolution.skrip.leon.model.Kasus;
+import com.kratonsolution.skrip.leon.model.Solusi;
 
 import io.jsondb.JsonDBTemplate;
 
@@ -100,21 +106,21 @@ public class DiagnosaController {
 		
 		holder.addAttribute("bit", builder.toString());
 		
-		Diagnosa diagnosa = db.findById(builder.toString(), Diagnosa.class);
-		if(diagnosa != null) {
+		Kasus kasus = db.findById(builder.toString(), Kasus.class);
+		if(kasus != null) {
 			
 			holder.addAttribute("match","100%");
-			holder.addAttribute("problem", diagnosa.getProblem());
-			holder.addAttribute("solusions", diagnosa.getSolusi());
+			holder.addAttribute("problem", kasus.getGangguans());
+			holder.addAttribute("solusions", kasus.getSolutions());
 			holder.addAttribute("mflag", true);
 		}
 		else {
 			
 			double buffer = 0d;
-			Diagnosa obj = null;
+			Kasus obj = null;
 			
-			List<Diagnosa> list = db.findAll(Diagnosa.class);
-			for(Diagnosa diag:list) {
+			List<Kasus> list = db.findAll(Kasus.class);
+			for(Kasus diag:list) {
 				
                 Map<CharSequence, Integer> rightVector = Arrays.stream(diag.getBit().split(""))
                         .collect(Collectors.toMap(c -> c, c -> 1, Integer::sum));
@@ -130,38 +136,72 @@ public class DiagnosaController {
 			if(obj != null && buffer > 50d) {
 				
 				holder.addAttribute("match", Double.valueOf(buffer).intValue()+"%");
-				holder.addAttribute("problem", obj.getProblem());
-				holder.addAttribute("solusions", obj.getSolusi());
+				holder.addAttribute("problem", obj.getGangguans());
+				holder.addAttribute("solusions", obj.getSolutions());
 				holder.addAttribute("mflag",false);
 				
-				Diagnosa diagObj = new Diagnosa();
-				diagObj.setBit(builder.toString());
-				diagObj.setProblem(obj.getProblem());
-				diagObj.setSolusi(obj.getSolusi());
+				DraftKasus draft = new DraftKasus();
+				draft.setBit(builder.toString());
+				draft.setGangguans(obj.getGangguans());
+				draft.setSolutions(obj.getSolutions());
 				
-				db.insert(diagObj);
+				List<Gejala> gejala = getGejalas();
+				
+				for(int idx=0;idx<builder.toString().length();idx++) {
+					
+					GejalaKasus gk = new GejalaKasus();
+					gk.setEnabled(builder.toString().charAt(idx) == '1');
+					gk.setGejalaID(gejala.get(idx).getId());
+					gk.setGejalaNote(gejala.get(idx).getNote());
+					
+					draft.getGejalas().add(gk);
+				}
+				
+				db.insert(draft);
 			}
 			else {
 				
 				holder.addAttribute("match", "kurang dari 50%");
-				holder.addAttribute("problem", "Belum diketahui");
+				holder.addAttribute("problem", db.findAll(Gangguan.class));
+				holder.addAttribute("problem", db.findAll(Solusi.class));
 				holder.addAttribute("mflag",false);
 				
-				Diagnosa diagObj = new Diagnosa();
-				diagObj.setBit(builder.toString());
-				diagObj.setProblem("");
-
-				for(String s:DBStatic.SOLUSI) {
-					diagObj.getSolusi().add(s);
-				}
-
-				holder.addAttribute("solusions", diagObj.getSolusi());
-
+				DraftKasus draft = new DraftKasus();
+				draft.setBit(builder.toString());
+				draft.setGangguans(obj.getGangguans());
+				draft.setSolutions(obj.getSolutions());
 				
-				db.insert(diagObj);
+				List<Gejala> gejala = getGejalas();
+				
+				for(int idx=0;idx<builder.toString().length();idx++) {
+					
+					GejalaKasus gk = new GejalaKasus();
+					gk.setEnabled(builder.toString().charAt(idx) == '1');
+					gk.setGejalaID(gejala.get(idx).getId());
+					gk.setGejalaNote(gejala.get(idx).getNote());
+					
+					draft.getGejalas().add(gk);
+				}
+				
+				db.insert(draft);
 			}
 		}
 		
 		return "hasil";
+	}
+	
+	private List<Gejala> getGejalas() {
+		
+		List<Gejala> gejalas = db.findAll(Gejala.class);
+		gejalas.sort(new Comparator<Gejala>() {
+
+			@Override
+			public int compare(Gejala o1, Gejala o2) {
+				// TODO Auto-generated method stub
+				return o2.getIndex() - o1.getIndex();
+			}
+		});
+		
+		return gejalas;
 	}
 }
