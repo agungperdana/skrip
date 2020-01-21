@@ -3,6 +3,7 @@
  */
 package com.kratonsolution.skrip.leon.view;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
@@ -18,10 +19,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kratonsolution.skrip.leon.model.DraftKasus;
 import com.kratonsolution.skrip.leon.model.Gangguan;
+import com.kratonsolution.skrip.leon.model.GangguanKasus;
 import com.kratonsolution.skrip.leon.model.Gejala;
 import com.kratonsolution.skrip.leon.model.GejalaKasus;
 import com.kratonsolution.skrip.leon.model.Kasus;
 import com.kratonsolution.skrip.leon.model.Solusi;
+import com.kratonsolution.skrip.leon.model.SolusiKasus;
 
 import io.jsondb.JsonDBTemplate;
 
@@ -110,7 +113,7 @@ public class DiagnosaController {
 		if(kasus != null) {
 			
 			holder.addAttribute("match","100%");
-			holder.addAttribute("problem", kasus.getGangguans());
+			holder.addAttribute("gangguans", kasus.getGangguans());
 			holder.addAttribute("solusions", kasus.getSolutions());
 			holder.addAttribute("mflag", true);
 		}
@@ -136,7 +139,7 @@ public class DiagnosaController {
 			if(obj != null && buffer > 50d) {
 				
 				holder.addAttribute("match", Double.valueOf(buffer).intValue()+"%");
-				holder.addAttribute("problem", obj.getGangguans());
+				holder.addAttribute("gangguans", obj.getGangguans());
 				holder.addAttribute("solusions", obj.getSolutions());
 				holder.addAttribute("mflag",false);
 				
@@ -161,15 +164,36 @@ public class DiagnosaController {
 			}
 			else {
 				
+				List<GangguanKasus> gangguans = new ArrayList<>();
+				List<SolusiKasus> solusions = new ArrayList<>();
+				
+				db.findAll(Gangguan.class).forEach(gang -> {
+					
+					GangguanKasus gk = new GangguanKasus();
+					gk.setGangguanID(gang.getId());
+					gk.setGangguanNote(gang.getNote());
+					
+					gangguans.add(gk);
+				});
+				
+				db.findAll(Solusi.class).forEach(sol -> {
+					
+					SolusiKasus ks = new SolusiKasus();
+					ks.setSolusiID(sol.getId());
+					ks.setSolusiNote(sol.getNote());
+					
+					solusions.add(ks);
+				});
+				
 				holder.addAttribute("match", "kurang dari 50%");
-				holder.addAttribute("problem", db.findAll(Gangguan.class));
-				holder.addAttribute("problem", db.findAll(Solusi.class));
+				holder.addAttribute("gangguans", gangguans);
+				holder.addAttribute("solusions", solusions);
 				holder.addAttribute("mflag",false);
 				
 				DraftKasus draft = new DraftKasus();
 				draft.setBit(builder.toString());
-				draft.setGangguans(obj.getGangguans());
-				draft.setSolutions(obj.getSolutions());
+				draft.getGangguans().addAll(gangguans);
+				draft.getSolutions().addAll(solusions);
 				
 				List<Gejala> gejala = getGejalas();
 				

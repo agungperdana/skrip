@@ -30,7 +30,7 @@ public class DraftKasusController {
 	@GetMapping("/admin/draft-kasus-preedit")
 	public String preedit(Model model, @RequestParam String id) {
 
-		model.addAttribute("kasus", db.findById(id, Kasus.class));
+		model.addAttribute("kasus", db.findById(id, DraftKasus.class));
 		return "draft-kasus-edit";
 	}
 
@@ -79,18 +79,18 @@ public class DraftKasusController {
 				}
 			});
 
-			db.save(draft, Kasus.class);
+			db.save(draft, DraftKasus.class);
 		}
 
 		return HOME;
 	}
 	
-	@GetMapping("/admin/draft-kasus-delete")
+	@GetMapping("/admin/draft-kasus-convert")
 	public String convert(@RequestParam String id) {
 		
 		DraftKasus draft = db.findById(id, DraftKasus.class);
 		Kasus kasus = db.findById(id, Kasus.class);
-		if(draft != null && kasus != null) {
+		if(draft != null && kasus == null) {
 			
 			db.insert(draft.toKasus());
 		}
@@ -100,7 +100,7 @@ public class DraftKasusController {
 		return HOME;
 	}
 
-	@GetMapping("/admin/draft-kasus-convert")
+	@GetMapping("/admin/draft-kasus-delete")
 	public String delete(@RequestParam String id) {
 
 		DraftKasus draft = db.findById(id, DraftKasus.class);

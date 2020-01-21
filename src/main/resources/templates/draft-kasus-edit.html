@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>COSIN APP V-1.0</title>
+    <link rel="stylesheet" data-th-href="@{/photon/dist/css/photon.min.css}"/>
+    <script type="text/javascript">
+    	
+    	function setValue(ref) {
+    		
+    		if(ref.checked) {
+    			ref.value = true;
+    		}
+    		else {
+    			ref.value = false;
+    		}
+    	}
+    </script>
+  </head>
+  <body>
+    <div class="window">
+
+      <header class="toolbar toolbar-header">
+        <h1 class="title">PENGATURAN DATA DRAFT KASUS</h1>
+      </header>
+
+      <!-- Your app's content goes inside .window-content -->
+      <div class="window-content" style="overflow: scroll;">
+        <div class="pane-group">
+          <div class="pane pane-sm sidebar">
+            <nav class="nav-group">
+              <h5 class="nav-group-title">ADMINISTRASI</h5>
+              <span class="nav-group-item">
+                <span class="icon icon-home"></span>
+                <a style="cursor: pointer;" data-th-href="@{/admin/gangguan-home}">Gangguan</a>
+              </span>
+              <span class="nav-group-item ">
+                <span class="icon icon-light-up"></span>
+                <a style="cursor: pointer;" data-th-href="@{/admin/gejala-home}">Gejala</a>
+              </span>
+              <span class="nav-group-item active">
+                <span class="icon icon-download"></span>
+                <a style="cursor: pointer;" data-th-href="@{/admin/solusi-home}">Solusi</a>
+              </span>
+              <span class="nav-group-item">
+                <span class="icon icon-monitor"></span>
+                <a style="cursor: pointer;" data-th-href="@{/admin/kasus-home}">Kasus</a>
+              </span>
+              <span class="nav-group-item">
+                <span class="icon icon-flashlight"></span>
+                <a style="cursor: pointer;" data-th-href="@{/admin/draft-kasus-home}">Draft Kasus</a>
+              </span>
+            </nav>
+          </div>
+
+          <div class="pane">
+          	<form data-th-action="@{/admin/draft-kasus-edit?id=}+${kasus.bit}" method="POST">
+          	<div class="toolbar-actions">
+          		<button class="btn btn-negative" onclick="javascript:window.location='/admin/draft-kasus-home'">
+        			<span class="icon icon-cancel-circled"></span>
+        			Batalkan
+      			</button>
+      			<button type="submit" class="btn btn-positive">
+        			<span class="icon icon-plus-circled"></span>
+        			Simpan
+      			</button>
+          	</div>
+			<table>
+              <tbody>
+              <tr>
+              	<td>Bit :</td>
+              	<td width="90%"><input name="bit" size="50" data-th-value="${kasus.bit}"/></td>
+              </tr>
+              <tr><td colspan="2">&nbsp;</td></tr>
+              <tr>
+              	<td valign="top" width="100%" colspan="2">
+              		<table class="table-striped">
+		              <thead>
+		              	<tr>
+		                  <th colspan="2" align="center" style="font-weight: bolder;">GEJALA</th>
+		                </tr>
+		                <tr>
+		                  <th colspan="1%" align="center">Aktif</th>
+		                  <th width="99%" align="left">KETERANGAN</th>
+		                </tr>
+		              </thead>
+		              <tbody>
+		                <tr data-th-each="gejala:${kasus.gejalas}">
+		                	<td>
+		                		<select name="gej-en">
+		                			<option value="false" data-th-selected="${!gejala.enabled}">Tidak</option>
+		                			<option value="true" data-th-selected="${gejala.enabled}">Ya</option>
+		                		</select>
+		                		<input type="hidden" name="gej-id" data-th-value="${gejala.gejalaID}"/>
+		                		<input type="hidden" name="gej-note" data-th-value="${gejala.gejalaNote}"/>
+		                	</td>	
+		                  	<td data-th-text="${gejala.gejalaNote}"/>
+		                </tr>
+		               </tbody>
+		              </table>
+              	</td>
+              </tr>
+              <tr><td colspan="2">&nbsp;</td></tr>
+              <tr>
+              	<td valign="top" width="100%" colspan="2">
+              		<table class="table-striped">
+		              <thead>
+		              	<tr>
+		                  <th colspan="2" align="center" style="font-weight: bolder;">GANGGUAN</th>
+		                </tr>
+		                <tr>
+		                  <th colspan="1%" align="center">Aktif</th>
+		                  <th width="99%" align="left">KETERANGAN</th>
+		                </tr>
+		              </thead>
+		              <tbody>
+		                <tr data-th-each="gangguan:${kasus.gangguans}">
+		                	<td>
+		                		<select name="gang-en">
+		                			<option value="false" data-th-selected="${!gangguan.enabled}">Tidak</option>
+		                			<option value="true" data-th-selected="${gangguan.enabled}">Ya</option>
+		                		</select>
+		                		<input type="hidden" name="gang-id" data-th-value="${gangguan.gangguanID}"/>
+		                		<input type="hidden" name="gang-note" data-th-value="${gangguan.gangguanNote}"/>
+		                	</td>	
+		                  	<td data-th-text="${gangguan.gangguanNote}"/>
+		                </tr>
+		               </tbody>
+		              </table>
+              	</td>
+              </tr>
+              <tr><td colspan="2">&nbsp;</td></tr>
+              <tr>
+              	<td valign="top" width="100%" colspan="2">
+              		<table class="table-striped">
+		              <thead>
+		                <tr><th colspan="2" align="center" style="font-weight:bolder;">SOLUSI</th></tr>
+		                <tr>
+		                  <th colspan="1%" align="center">Aktif</th>
+		                  <th width="99%" align="left">KETERANGAN</th>
+		                </tr>
+		              </thead>
+		              <tbody>
+		                <tr data-th-each="solusi:${kasus.solutions}">
+		                	<td>
+		                		<select name="sol-en">
+		                			<option value="false" data-th-selected="${!solusi.enabled}">Tidak</option>
+		                			<option value="true" data-th-selected="${solusi.enabled}">Ya</option>
+		                		</select>
+		                		<input type="hidden" name="sol-id" data-th-value="${solusi.solusiID}"/>
+		                		<input type="hidden" name="sol-note" data-th-value="${solusi.solusiNote}"/>
+		                	</td>	
+		                  	<td data-th-text="${solusi.solusiNote}"/>
+		                </tr>
+		               </tbody>
+		              </table>
+              	</td>
+              </tr>
+               </tbody>
+              </table>
+              </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

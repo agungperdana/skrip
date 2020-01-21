@@ -48,16 +48,20 @@
 				<td data-th-text="${match}"/>
 			</tr>
 			<tr>
-				<td width="5%">Perkiraan Masalah</td>
+				<td width="5%">Perkiraan Gangguan</td>
 				<td>:</td>
-				<td data-th-text="${problem}"/>
+				<td align="left" valign="top">
+					<ul data-th-each="gangguan:${gangguans}">
+						<li data-th-if="${gangguan.enabled}" data-th-text="${gangguan.gangguanNote}"/>
+					</ul>
+				</td>
 			</tr>
 			<tr>
 				<td width="5%">Solusi</td>
 				<td>:</td>
-				<td>
-					<ul>
-						<li data-th-each="solusi:${solusions}" data-th-text="${solusi}"/>
+				<td  align="left" valign="top">
+					<ul data-th-each="solusi:${solusions}">
+						<li data-th-if="${solusi.enabled}" data-th-text="${solusi.solusiNote}"/>
 					</ul>
 				</td>
 			</tr>
