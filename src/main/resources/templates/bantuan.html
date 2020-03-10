@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>COSIN APP V-1.0</title>
+    <link rel="stylesheet" data-th-href="@{/photon/dist/css/photon.min.css}"/>
+  </head>
+  <body>
+    <div class="window">
+
+      <header class="toolbar toolbar-header">
+        <h1 class="title">APLIKASI CERDAS DIAGNOSA GANGGUAN LAYANAN INDIHOME</h1>
+      </header>
+
+      <!-- Your app's content goes inside .window-content -->
+      <div class="window-content">
+        <div class="pane-group">
+          <div class="pane pane-sm sidebar">
+            <nav class="nav-group">
+              <h5 class="nav-group-title">Navigasi Pengguna</h5>
+              <span class="nav-group-item">
+                <span class="icon icon-home"></span>
+                Beranda
+              </span>
+              <span class="nav-group-item">
+                <span class="icon icon-light-up"></span>
+                <a style="cursor: pointer;" data-th-href="@{/prepare-diagnosa}">Diagnosa</a>
+              </span>
+              <span class="nav-group-item active">
+                <span class="icon icon-download"></span>
+                <a style="cursor: pointer;" data-th-href="@{/prepare-bantuan}">Bantuan</a>
+              </span>
+            </nav>
+          </div>
+
+          <div class="pane">
+			<div style="text-align: left;">
+				</br></br>
+				Panduan Pengguna<br/>
+				1. Terdapat menu Beranda dimana berisi halaman utama pengguna<br/>
+				2. Terdapat menu Diagnosa dimana pengguna dapat melakukan pengecekan gejala yang dialami<br/>
+				3. Didalam menu Diagnosa terdapat pertanyaan dan gejala gangguan yang dialami<br/>
+				4. Bacalah dengan seksama setiap pertanyaan kemudian pilih YA/TIDAK. Sesuai dengan keluhan yang dialami<br/>
+			</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

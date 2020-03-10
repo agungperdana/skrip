@@ -34,3 +34,8 @@ dependencies {
 springBoot {
         mainClassName = "com.kratonsolution.skrip.leon.EntryPoint"
     }
+   
+   
+ bootJar {
+ 	enabled=true
+ }

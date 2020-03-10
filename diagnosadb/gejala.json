@@ -1,32 +1,32 @@
 {"schemaVersion":"1.0"}
-{"id":"6126b5b4-5f3e-4e57-b23d-39127bf6aad6","index":1,"note":"GJ1"}
-{"id":"e1ed6bfc-b580-42ca-ac4b-97d32e9818d9","index":2,"note":"GJ2"}
-{"id":"77be873c-33f5-4318-8dd7-9a971f790338","index":3,"note":"GJ3"}
-{"id":"0b961ab1-685c-4a2e-ab2b-3f0b4a1ad435","index":4,"note":"GJ4"}
-{"id":"77e23b51-ab57-48d9-bda7-afed73efb97e","index":5,"note":"GJ5"}
-{"id":"088bc4e9-6add-4a87-ab08-9f0faf64f7de","index":6,"note":"GJ6"}
-{"id":"28eeacb4-6c75-457b-8fb2-2922aa6745f4","index":7,"note":"Gj7"}
-{"id":"5078749e-6f55-46e4-806f-0523bddde5d1","index":8,"note":"GJ8"}
-{"id":"694452c7-f214-4940-9efe-e7f83948a465","index":9,"note":"GJ9"}
-{"id":"12b23be8-38c8-4bf3-9adc-ae98f550ee63","index":10,"note":"GJ10"}
-{"id":"6df57a5f-6cfe-45a1-b6a8-624167e8c77f","index":11,"note":"GJ11"}
-{"id":"0908ba11-2d95-4e6e-8396-6c0c3649d72e","index":12,"note":"GJ12"}
-{"id":"3f2ffaea-429b-46f5-ad2e-ed0a8aceb353","index":13,"note":"GJ13"}
-{"id":"12b8e437-5076-4561-88c5-3ad0faf2c9b5","index":14,"note":"GJ14"}
-{"id":"5d851371-6a3c-44eb-aa18-f0126654d947","index":15,"note":"GJ15"}
-{"id":"1d9e45c9-e281-4a37-b097-0c68b40ddfdd","index":16,"note":"GJ16"}
-{"id":"f7b5e265-0b77-45e9-ba87-0c446e676ee5","index":17,"note":"GJ17"}
-{"id":"3a6e4689-1011-43c1-a6ee-5d69c0f5e938","index":18,"note":"GJ18"}
-{"id":"3350f314-4dac-4ec8-a7a3-97d17a52efa4","index":19,"note":"GJ19"}
-{"id":"8a41d557-3997-4132-abf0-1ba69520b0a6","index":20,"note":"GJ20"}
-{"id":"bd2901bc-700d-422a-b07b-42d8fa7406c7","index":21,"note":"GJ21"}
-{"id":"23fa13e7-33b6-4b05-aa9e-7d0223e59bf4","index":22,"note":"GJ22"}
-{"id":"42f73921-4c99-4e36-bddb-97b5d10819d4","index":23,"note":"GJ23"}
-{"id":"9b608156-3d4a-46e5-84b6-3a8b7af07936","index":24,"note":"GJ24"}
-{"id":"997b4910-d0ca-47a8-acf4-2cf165a68edf","index":25,"note":"GJ25"}
-{"id":"f1927cf1-7d5b-415a-a792-c511b6561e6c","index":26,"note":"GJ26"}
-{"id":"1547b3ea-bb51-406a-80bf-acdc140c8876","index":27,"note":"GJ27"}
-{"id":"b63865b7-efff-4e3d-ae16-cdcf3cbf0ced","index":28,"note":"GJ28"}
-{"id":"01113189-df38-4820-acbb-ab1e859fd74a","index":29,"note":"GJ29"}
-{"id":"93579f1f-d416-44d1-b0a4-d2ced93f602e","index":30,"note":"GJ30"}
-{"id":"124d0380-692f-43ba-a667-192ed97b63b4","index":31,"note":"GJ31"}
+{"id":"6126b5b4-5f3e-4e57-b23d-39127bf6aad6","index":1,"note":"Telepon mati tidak ada nada"}
+{"id":"e1ed6bfc-b580-42ca-ac4b-97d32e9818d9","index":2,"note":"Splitter tidak berfungsi"}
+{"id":"77be873c-33f5-4318-8dd7-9a971f790338","index":3,"note":"Kabel UTP telepon rusak"}
+{"id":"0b961ab1-685c-4a2e-ab2b-3f0b4a1ad435","index":4,"note":"Connector RJ 11 tidak berfungsi"}
+{"id":"77e23b51-ab57-48d9-bda7-afed73efb97e","index":5,"note":"Nada TLP ngetut-tut"}
+{"id":"088bc4e9-6add-4a87-ab08-9f0faf64f7de","index":6,"note":"Nada TLP nada panjang"}
+{"id":"28eeacb4-6c75-457b-8fb2-2922aa6745f4","index":7,"note":"Lampu indikator PON mati"}
+{"id":"5078749e-6f55-46e4-806f-0523bddde5d1","index":8,"note":"Lampu indikator LOS merah"}
+{"id":"694452c7-f214-4940-9efe-e7f83948a465","index":9,"note":"Fast connector tidak berfungsi"}
+{"id":"12b23be8-38c8-4bf3-9adc-ae98f550ee63","index":10,"note":"Lampu indikator power mati"}
+{"id":"6df57a5f-6cfe-45a1-b6a8-624167e8c77f","index":11,"note":"Modem ONT tidak menyala"}
+{"id":"0908ba11-2d95-4e6e-8396-6c0c3649d72e","index":12,"note":"Internet tidak bisa connect"}
+{"id":"3f2ffaea-429b-46f5-ad2e-ed0a8aceb353","index":13,"note":"Tidak bisa browsing"}
+{"id":"12b8e437-5076-4561-88c5-3ad0faf2c9b5","index":14,"note":"Ip pc sesuai dengan ip modem"}
+{"id":"5d851371-6a3c-44eb-aa18-f0126654d947","index":15,"note":"Error 1302"}
+{"id":"1d9e45c9-e281-4a37-b097-0c68b40ddfdd","index":16,"note":"Koneksi ke EPG gagal"}
+{"id":"f7b5e265-0b77-45e9-ba87-0c446e676ee5","index":17,"note":"Error 1305"}
+{"id":"3a6e4689-1011-43c1-a6ee-5d69c0f5e938","index":18,"note":"Bandwidth tidak sesuai paket"}
+{"id":"3350f314-4dac-4ec8-a7a3-97d17a52efa4","index":19,"note":"Koneksi putus-putus"}
+{"id":"8a41d557-3997-4132-abf0-1ba69520b0a6","index":20,"note":"Gambar Useetv blank"}
+{"id":"bd2901bc-700d-422a-b07b-42d8fa7406c7","index":21,"note":"Konfigurasi tidak sesuai"}
+{"id":"23fa13e7-33b6-4b05-aa9e-7d0223e59bf4","index":22,"note":"Konfigurasi setting hilang"}
+{"id":"42f73921-4c99-4e36-bddb-97b5d10819d4","index":23,"note":"Pc tidak dapat ip"}
+{"id":"9b608156-3d4a-46e5-84b6-3a8b7af07936","index":24,"note":"Tidak bisa membuka web tertentu"}
+{"id":"997b4910-d0ca-47a8-acf4-2cf165a68edf","index":25,"note":"Error 1901"}
+{"id":"f1927cf1-7d5b-415a-a792-c511b6561e6c","index":26,"note":"Channel multicast mengalami data timeout"}
+{"id":"1547b3ea-bb51-406a-80bf-acdc140c8876","index":27,"note":"Tidak ada tunggakan pembayaran"}
+{"id":"b63865b7-efff-4e3d-ae16-cdcf3cbf0ced","index":28,"note":"Error 4514"}
+{"id":"01113189-df38-4820-acbb-ab1e859fd74a","index":29,"note":"Koneksi lambat pc pelanggan dishare"}
+{"id":"93579f1f-d416-44d1-b0a4-d2ced93f602e","index":30,"note":"Gambar Useetv putus-putus"}
+{"id":"124d0380-692f-43ba-a667-192ed97b63b4","index":31,"note":"Lampu indikator mati"}

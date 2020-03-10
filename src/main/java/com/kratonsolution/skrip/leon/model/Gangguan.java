@@ -11,7 +11,17 @@ public class Gangguan {
 	@Id
 	private String id = UUID.randomUUID().toString();
 
+	private int index;
+	
 	private String note;
+
+	public int getIndex() {
+		return index;
+	}
+
+	public void setIndex(int index) {
+		this.index = index;
+	}
 
 	public String getId() {
 		return id;

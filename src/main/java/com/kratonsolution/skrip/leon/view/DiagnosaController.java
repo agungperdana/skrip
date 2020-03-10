@@ -3,6 +3,9 @@
  */
 package com.kratonsolution.skrip.leon.view;
 
+import java.math.BigDecimal;
+import java.math.MathContext;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -27,11 +30,13 @@ import com.kratonsolution.skrip.leon.model.Solusi;
 import com.kratonsolution.skrip.leon.model.SolusiKasus;
 
 import io.jsondb.JsonDBTemplate;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author Leoni
  *
  */
+@Slf4j
 @Controller
 public class DiagnosaController {
 	
@@ -109,8 +114,22 @@ public class DiagnosaController {
 		
 		holder.addAttribute("bit", builder.toString());
 		
-		Kasus kasus = db.findById(builder.toString(), Kasus.class);
+		System.out.println("INPUT ["+builder.toString()+"]");
+		
+		List<Kasus> kasusList = db.findAll(Kasus.class);
+		Kasus kasus = null;
+		for(Kasus db:kasusList) {
+			
+			System.out.println("BIT ["+db.getBit()+"] ["+builder.toString()+"]");
+			if(db.getBit().trim().equalsIgnoreCase(builder.toString().trim())) {
+				kasus = db;
+				break;
+			}
+		}
+		
 		if(kasus != null) {
+		
+			System.out.println("KASUS SAMA");
 			
 			holder.addAttribute("match","100%");
 			holder.addAttribute("gangguans", kasus.getGangguans());
@@ -129,21 +148,25 @@ public class DiagnosaController {
                         .collect(Collectors.toMap(c -> c, c -> 1, Integer::sum));
                 
                 double similarity = cosine.cosineSimilarity(leftVector, rightVector);
-                if(similarity > buffer) {
+                
+                //System.out.println(leftVector+" - "+rightVector);
+                
+                //System.out.println("bit ["+diag.getBit()+"] buffer ["+buffer+"] similarity ["+similarity+"]");
+                if(similarity > buffer && similarity < 1d) {
                 	
                 	buffer = similarity;
                 	obj = diag;
                 }
 			}
 			
-			if(obj != null && buffer > 50d) {
+			if(obj != null && buffer > 0.5d) {
 				
-				holder.addAttribute("match", Double.valueOf(buffer).intValue()+"%");
+				holder.addAttribute("match",buffer*100);
 				holder.addAttribute("gangguans", obj.getGangguans());
 				holder.addAttribute("solusions", obj.getSolutions());
 				holder.addAttribute("mflag",false);
 				
-				DraftKasus draft = new DraftKasus();
+				DraftKasus	 draft = new DraftKasus();
 				draft.setBit(builder.toString());
 				draft.setGangguans(obj.getGangguans());
 				draft.setSolutions(obj.getSolutions());
