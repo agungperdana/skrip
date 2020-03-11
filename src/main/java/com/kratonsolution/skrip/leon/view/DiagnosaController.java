@@ -1,11 +1,5 @@
-/**
- * 
- */
 package com.kratonsolution.skrip.leon.view;
 
-import java.math.BigDecimal;
-import java.math.MathContext;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -108,29 +102,17 @@ public class DiagnosaController {
 				.append(g29)
 				.append(g30)
 				.append(g31);
+
+		log.info("input bit {} dengan panjang {}", builder.toString(), builder.toString().length());
 		
 		Map<CharSequence, Integer> leftVector = Arrays.stream(builder.toString().split(""))
                 .collect(Collectors.toMap(c -> c, c -> 1, Integer::sum));
 		
 		holder.addAttribute("bit", builder.toString());
 		
-		System.out.println("INPUT ["+builder.toString()+"]");
-		
-		List<Kasus> kasusList = db.findAll(Kasus.class);
-		Kasus kasus = null;
-		for(Kasus db:kasusList) {
-			
-			System.out.println("BIT ["+db.getBit()+"] ["+builder.toString()+"]");
-			if(db.getBit().trim().equalsIgnoreCase(builder.toString().trim())) {
-				kasus = db;
-				break;
-			}
-		}
-		
+		Kasus kasus = db.findById(builder.toString(), Kasus.class);
 		if(kasus != null) {
 		
-			System.out.println("KASUS SAMA");
-			
 			holder.addAttribute("match","100%");
 			holder.addAttribute("gangguans", kasus.getGangguans());
 			holder.addAttribute("solusions", kasus.getSolutions());
@@ -138,20 +120,22 @@ public class DiagnosaController {
 		}
 		else {
 			
+			log.info("Tidak ditemukan kecocokan data");
+			//Tidak ada yg cocok 100%, persiapkan data draft kasus
+			DraftKasus	 draft = new DraftKasus();
+			
 			double buffer = 0d;
 			Kasus obj = null;
 			
 			List<Kasus> list = db.findAll(Kasus.class);
 			for(Kasus diag:list) {
 				
+				log.info("manual compare source {} db {} result {}", builder.toString(), diag.getBit(), diag.getBit().trim().equals(builder.toString().trim()));
+				
                 Map<CharSequence, Integer> rightVector = Arrays.stream(diag.getBit().split(""))
                         .collect(Collectors.toMap(c -> c, c -> 1, Integer::sum));
                 
                 double similarity = cosine.cosineSimilarity(leftVector, rightVector);
-                
-                //System.out.println(leftVector+" - "+rightVector);
-                
-                //System.out.println("bit ["+diag.getBit()+"] buffer ["+buffer+"] similarity ["+similarity+"]");
                 if(similarity > buffer && similarity < 1d) {
                 	
                 	buffer = similarity;
@@ -161,12 +145,13 @@ public class DiagnosaController {
 			
 			if(obj != null && buffer > 0.5d) {
 				
-				holder.addAttribute("match",buffer*100);
+				log.info("Kemiripan tertinggi dengan {} jumblah bit {}", obj.getBit(), obj.getBit().length());
+				
+				holder.addAttribute("match",buffer*100+"%");
 				holder.addAttribute("gangguans", obj.getGangguans());
 				holder.addAttribute("solusions", obj.getSolutions());
 				holder.addAttribute("mflag",false);
 				
-				DraftKasus	 draft = new DraftKasus();
 				draft.setBit(builder.toString());
 				draft.setGangguans(obj.getGangguans());
 				draft.setSolutions(obj.getSolutions());
@@ -182,8 +167,6 @@ public class DiagnosaController {
 					
 					draft.getGejalas().add(gk);
 				}
-				
-				db.insert(draft);
 			}
 			else {
 				
@@ -213,7 +196,6 @@ public class DiagnosaController {
 				holder.addAttribute("solusions", solusions);
 				holder.addAttribute("mflag",false);
 				
-				DraftKasus draft = new DraftKasus();
 				draft.setBit(builder.toString());
 				draft.getGangguans().addAll(gangguans);
 				draft.getSolutions().addAll(solusions);
@@ -229,9 +211,12 @@ public class DiagnosaController {
 					
 					draft.getGejalas().add(gk);
 				}
+			}
+			
+			try {
 				
 				db.insert(draft);
-			}
+			} catch (Exception e) {}
 		}
 		
 		return "hasil";
