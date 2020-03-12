@@ -103,10 +103,8 @@ public class DiagnosaController {
 				.append(g30)
 				.append(g31);
 
-		log.info("input bit {} dengan panjang {}", builder.toString(), builder.toString().length());
-		
-		Map<CharSequence, Integer> leftVector = Arrays.stream(builder.toString().split(""))
-                .collect(Collectors.toMap(c -> c, c -> 1, Integer::sum));
+		log.info("Start parsing user input -> ");
+		Map<CharSequence, Integer> leftVector = createVector(builder.toString());
 		
 		holder.addAttribute("bit", builder.toString());
 		
@@ -128,18 +126,18 @@ public class DiagnosaController {
 			Kasus obj = null;
 			
 			List<Kasus> list = db.findAll(Kasus.class);
-			for(Kasus diag:list) {
+			for(Kasus db:list) {
 				
-				log.info("manual compare source {} db {} result {}", builder.toString(), diag.getBit(), diag.getBit().trim().equals(builder.toString().trim()));
-				
-                Map<CharSequence, Integer> rightVector = Arrays.stream(diag.getBit().split(""))
-                        .collect(Collectors.toMap(c -> c, c -> 1, Integer::sum));
+                Map<CharSequence, Integer> rightVector = createVector(db.getBit());
                 
                 double similarity = cosine.cosineSimilarity(leftVector, rightVector);
-                if(similarity > buffer && similarity < 1d) {
+
+                log.info("left {}, right {}, sim {}", leftVector, rightVector, similarity);
+                
+                if(similarity > buffer) {
                 	
                 	buffer = similarity;
-                	obj = diag;
+                	obj = db;
                 }
 			}
 			
@@ -235,5 +233,55 @@ public class DiagnosaController {
 		});
 		
 		return gejalas;
+	}
+	
+	public Map<CharSequence, Integer> createVector(String input) {
+		
+		log.info("input {} ", input);
+		
+		StringBuilder tmp = new StringBuilder();
+		for(int idx=0;idx<input.length();idx++) {
+			tmp.append(mask(Integer.parseInt(input.charAt(idx)+"")+(idx+1)));
+		}
+		
+		return Arrays.stream(tmp.toString().split("")).collect(Collectors.toMap(c -> c, c -> 1, Integer::sum));
+	}
+	
+	private String mask(int idx) {
+		
+		switch (idx) {
+			case 1: return "A";
+			case 2: return "C";
+			case 3: return "D";
+			case 4: return "E";
+			case 5: return "F";
+			case 6: return "G";
+			case 7: return "H";
+			case 8: return "I";
+			case 9: return "J";
+			case 10: return "K";
+			case 11: return "L";
+			case 12: return "M";
+			case 13: return "N";
+			case 14: return "O";
+			case 15: return "P";
+			case 16: return "Q";
+			case 17: return "R";
+			case 18: return "S";
+			case 19: return "T";
+			case 20: return "U";
+			case 21: return "V";
+			case 22: return "W";
+			case 23: return "X";
+			case 24: return "Y";
+			case 25: return "Z";
+			case 26: return "!";
+			case 27: return "@";
+			case 28: return "#";
+			case 29: return "$";
+			case 30: return "%";
+			case 31: return "&";
+			default: return "00";
+		}
 	}
 }
