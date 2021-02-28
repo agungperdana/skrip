@@ -1,18 +1,1 @@
 {"schemaVersion":"1.0"}
-{"id":"fbe1925b-801f-4c96-aced-0ecdaf1bc326","note":"Rekonek kabel UTP telepon"}
-{"id":"668726d1-1930-46dc-a50e-1c553a464d96","note":"Cek pada splitter pastikan RJ 11 yang masuk pada phone dan modem tidak terbalik"}
-{"id":"f0ff0e49-0673-4130-819c-acbe77cd6589","note":"Cek sambungan rosette pastikan tidak lembab air"}
-{"id":"9680a24c-e079-4bfc-a95d-3d561cc3a76b","note":"Cek redaman kabel dengan menggunakan OPM meter (ukuran baik tidak >25dBm)"}
-{"id":"2fa06dfd-480d-4bad-81a7-f87e76d8e636","note":"Lakukan rekoneksi sambungan/pengganti dropcore"}
-{"id":"389823c2-feb7-40aa-ab6d-7e0f1a09c7fe","note":"Reboot STB dengan cara: tekan tombol SET pada remote useetv>pilih konfigurasi>isi pasword dengan 6321>tingkat lanjut>reboot"}
-{"id":"7a3a59a6-953b-4a99-a5e8-71da02f93d97","note":"Tekan tombol info pada remote control>panah kanan [volume +] >tampil signal power quality standar>70%"}
-{"id":"f54a4e16-fd52-4246-ac94-534f0acf426f","note":"Lakukan create ulang konfigurasi"}
-{"id":"43e823a2-13b7-43a4-abcc-33e8cfe68fd8","note":"Periksa koneksi fisik dari kabel jaringan"}
-{"id":"964e15ff-f323-4263-a05c-5802e3265e07","note":"Cek koneksi kabel UTP & RJ 45 dari modem kearah STB coba di-reconnect ulang"}
-{"id":"93239434-ef28-4780-a0db-da90955333c4","note":"Apabila kabel UTP & RJ 45 sudah tidak berfungsi dapat dilakukan penggantian baru"}
-{"id":"94199c1f-2368-40c6-9cbf-fa387f97c680","note":"Dilakukan penggantian fast connector baru, kemudian lakukan penyambungan ulang"}
-{"id":"916132bd-54da-463b-9f08-c56dba9efd41","note":"Ganti kabel patchcord baru, melakukan penyambungan ulang dengan kabel dropcore"}
-{"id":"3e6b9690-ca23-49ef-93ff-7f7f77efa0e7","note":"Dilakukan pengecekan dengan adaptor dan modem test,apabila tidak berfungsi diganti dengan adaptor atau modem ONT baru"}
-{"id":"6e4f9d4a-9ee1-44b9-8844-a478ff697908","note":"Restart modem dengan cara mematikan modem power (power off) selama 3 menit kemudian modem dinyalakan kembali "}
-{"id":"1bcc5f2f-be8a-4b14-9b79-3a17f1ec21b9","note":"Pastikan kabel UTP dari STB menancap di LAN port 4 modem, agar mendapatkan alamat dari server"}
-{"id":"fb1f6489-8054-4158-a034-7c8e0341053a","note":"Lakukan create ulang: masuk pada putty,masukan script create setting konfigurasi dan masukan data nomor telepon,nomor internet dan SN (serial number) modem"}
