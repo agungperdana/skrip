@@ -11,7 +11,9 @@ public class Gejala {
 	@Id
 	private String id = UUID.randomUUID().toString();
 
-	private int index;
+	private int onScore;
+	
+	private int offScore;
 	
 	private String note;
 	
@@ -19,12 +21,20 @@ public class Gejala {
 		// TODO Auto-generated constructor stub
 	}
 
-	public int getIndex() {
-		return index;
+	public int getOffScore() {
+		return offScore;
 	}
 
-	public void setIndex(int index) {
-		this.index = index;
+	public void setOffScore(int offScore) {
+		this.offScore = offScore;
+	}
+
+	public int getOnScore() {
+		return onScore;
+	}
+
+	public void setOnScore(int index) {
+		this.onScore = index;
 	}
 
 	public String getId() {

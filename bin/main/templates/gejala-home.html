@@ -51,7 +51,9 @@
               <thead>
                 <tr>
                   <th colspan="2" align="center">&nbsp;</th>
-                  <th width="90%" align="left">Keterangan</th>
+                  <th width="90%" align="left">Deskripsi</th>
+                  <th align="center">On Score</th>
+                  <th align="center">Off Score</th>
                 </tr>
               </thead>
               <tbody>
@@ -68,6 +70,8 @@
                   		</a>
                   	</td>	
                   	<td data-th-text="${gejala.note}"/>
+                  	<td data-th-text="${gejala.onScore}"/>
+                  	<td data-th-text="${gejala.offScore}"/>
                 </tr>
                </tbody>
               </table>

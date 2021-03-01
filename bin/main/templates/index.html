@@ -21,7 +21,7 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto my-2 my-lg-0">
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">Info</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#services">Kasus</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#services">Lihat Kasus</a></li>
                     </ul>
                 </div>
             </div>
@@ -36,7 +36,7 @@
                     </div>
                     <div class="col-lg-8 align-self-baseline">
                         <p class="text-white-75 font-weight-light mb-5">Silahkan klik tombol "Mulai Diagnosa" Untuk memulai proses diagnosa gangguan pada BTS</p>
-                        <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Mulai Diagnosa</a>
+                        <a class="btn btn-primary btn-xl js-scroll-trigger" href="#survey">Mulai Diagnosa</a>
                     </div>
                 </div>
             </div>
@@ -90,6 +90,22 @@
                     </div>
                 </div>
             </div>
+            <section class="page-section" id="survey">
+            <div class="container">
+            	<h2 class="text-center mt-0">Silahkan pilih jawaban berdasarkan gejala :</h2>
+                <hr class="divider my-4" />
+         		<form data-th-action="/diagnosing" method="post">
+					<table style="border: none;width: 55%">
+					<tbody>
+						<tr data-th-each="quetion:${quetions}">
+							<td data-th-text="'Apakah '+${quetion.note}+' ?'"/>
+							<td><input type="checkbox" name="answers" data-th-value="${quetion.id}"/></td>
+						</tr>
+					</tbody>
+					</table>
+				</form>
+            </div>
+        </section>
         </section>
         <!-- Footer-->
         <footer class="bg-light py-5">

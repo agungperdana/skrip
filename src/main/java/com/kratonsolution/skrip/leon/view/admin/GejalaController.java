@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.kratonsolution.skrip.leon.view.admin;
 
 import java.util.Comparator;
@@ -18,8 +15,9 @@ import com.kratonsolution.skrip.leon.model.Gejala;
 import io.jsondb.JsonDBTemplate;
 
 /**
- * @author Leoni
- *
+ * @author Agung Dodi Perdana
+ * @email agung.dodi.perdana@gmail.com
+ * @version 2.0.0
  */
 @Controller
 public class GejalaController {
@@ -38,7 +36,7 @@ public class GejalaController {
 			@Override
 			public int compare(Gejala o1, Gejala o2) {
 				
-				return o1.getIndex() - o2.getIndex();
+				return o1.getOnScore() - o2.getOnScore();
 			}
 		});
 		
@@ -53,10 +51,13 @@ public class GejalaController {
 	}
 	
 	@PostMapping("/admin/gejala-add")
-	public String add(@RequestParam("note") String note, @RequestParam("index") int index) {
+	public String add(@RequestParam("note") String note, 
+						@RequestParam("onScore") int onScore,
+						@RequestParam("offScore") int offScore) {
 		
 		Gejala gejala = new Gejala();
-		gejala.setIndex(index);
+		gejala.setOnScore(onScore);
+		gejala.setOffScore(offScore);
 		gejala.setNote(note);
 		
 		db.insert(gejala);
@@ -72,12 +73,16 @@ public class GejalaController {
 	}
 	
 	@PostMapping("/admin/gejala-edit")
-	public String edit(@RequestParam("id") String id, @RequestParam("note") String note, @RequestParam("index") int index) {
+	public String edit(@RequestParam("id") String id, 
+						@RequestParam("note") String note, 
+						@RequestParam("onScore") int onScore,
+						@RequestParam("offScore") int offScore) {
 		
 		Gejala gejala = db.findById(id, Gejala.class);
 		if(gejala != null) {
 			
-			gejala.setIndex(index);
+			gejala.setOnScore(onScore);
+			gejala.setOffScore(offScore);
 			gejala.setNote(note);
 			db.save(gejala, Gejala.class);
 		}

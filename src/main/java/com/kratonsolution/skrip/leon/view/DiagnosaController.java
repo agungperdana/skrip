@@ -2,9 +2,11 @@ package com.kratonsolution.skrip.leon.view;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +29,9 @@ import io.jsondb.JsonDBTemplate;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * @author Leoni
- *
+ * @author Agung Dodi Perdana
+ * @email agung.dodi.perdana@gmail.com
+ * @version 2.0.0
  */
 @Slf4j
 @Controller
@@ -44,71 +47,35 @@ public class DiagnosaController {
 		return "diagnosa";
 	}
 	
-	@PostMapping("/do-diagnosa")
-	public String diagnose(Model holder,
-			@RequestParam("q1")String g1, 
-			@RequestParam("q2")String g2,
-			@RequestParam("q3")String g3,
-			@RequestParam("q4")String g4,
-			@RequestParam("q5")String g5,
-			@RequestParam("q6")String g6,
-			@RequestParam("q7")String g7,
-			@RequestParam("q8")String g8,
-			@RequestParam("q9")String g9,
-			@RequestParam("q10")String g10,
-			@RequestParam("q11")String g11,
-			@RequestParam("q12")String g12,
-			@RequestParam("q13")String g13,
-			@RequestParam("q14")String g14,
-			@RequestParam("q15")String g15,
-			@RequestParam("q16")String g16,
-			@RequestParam("q17")String g17,
-			@RequestParam("q18")String g18,
-			@RequestParam("q19")String g19,
-			@RequestParam("q20")String g20,
-			@RequestParam("q21")String g21,
-			@RequestParam("q22")String g22,
-			@RequestParam("q23")String g23,
-			@RequestParam("q24")String g24,
-			@RequestParam("q25")String g25,
-			@RequestParam("q26")String g26,
-			@RequestParam("q27")String g27,
-			@RequestParam("q28")String g28,
-			@RequestParam("q29")String g29,
-			@RequestParam("q30")String g30,
-			@RequestParam("q31")String g31) {
+	@PostMapping("/diagnosing")
+	public String diagnose(Model holder, @RequestParam("answers") Optional<String[]> answersOpt) {
 
-		StringBuilder builder = new StringBuilder();
-		builder.append(g1).append(g2).append(g3).append(g4).append(g5)
-				.append(g6).append(g7).append(g8).append(g9).append(g10)
-				.append(g11)
-				.append(g12)
-				.append(g13)
-				.append(g14)
-				.append(g15)
-				.append(g16)
-				.append(g17)
-				.append(g18)
-				.append(g19)
-				.append(g20)
-				.append(g21)
-				.append(g22)
-				.append(g23)
-				.append(g24)
-				.append(g25)
-				.append(g26)
-				.append(g27)
-				.append(g28)
-				.append(g29)
-				.append(g30)
-				.append(g31);
-
-		log.info("Start parsing user input -> ");
-		Map<CharSequence, Integer> leftVector = createVector(builder.toString());
+		StringBuilder tokens = new StringBuilder();
 		
-		holder.addAttribute("bit", builder.toString());
+		List<String> answers = new ArrayList<>();
+		if(answersOpt.isPresent()) {
+			answers.addAll(Arrays.asList(answersOpt.get()));
+		}
 		
-		Kasus kasus = db.findById(builder.toString(), Kasus.class);
+		List<Gejala> simtoms = db.findAll(Gejala.class);
+		Collections.sort(simtoms, (a,b)-> a.getOnScore() - b.getOnScore());
+		
+		simtoms.forEach(sim -> {
+			
+			if(answers.stream().anyMatch(answer -> answer.equals(sim.getId()))) {
+				tokens.append(sim.getOnScore());
+			}
+			else {
+				tokens.append(sim.getOffScore());
+			}
+		});
+	
+		log.info("Start parsing user input tokens -> {}", tokens);
+		Map<CharSequence, Integer> leftVector = createVector(tokens.toString());
+		
+		holder.addAttribute("bit", tokens.toString());
+		
+		Kasus kasus = db.findById(tokens.toString(), Kasus.class);
 		if(kasus != null) {
 		
 			holder.addAttribute("match","100%");
@@ -150,16 +117,16 @@ public class DiagnosaController {
 				holder.addAttribute("solusions", obj.getSolutions());
 				holder.addAttribute("mflag",false);
 				
-				draft.setBit(builder.toString());
+				draft.setBit(tokens.toString());
 				draft.setGangguans(obj.getGangguans());
 				draft.setSolutions(obj.getSolutions());
 				
 				List<Gejala> gejala = getGejalas();
 				
-				for(int idx=0;idx<builder.toString().length();idx++) {
+				for(int idx=0;idx<tokens.toString().length();idx++) {
 					
 					GejalaKasus gk = new GejalaKasus();
-					gk.setEnabled(builder.toString().charAt(idx) == '1');
+					gk.setEnabled(tokens.toString().charAt(idx) == '1');
 					gk.setGejalaID(gejala.get(idx).getId());
 					gk.setGejalaNote(gejala.get(idx).getNote());
 					
@@ -194,16 +161,16 @@ public class DiagnosaController {
 				holder.addAttribute("solusions", solusions);
 				holder.addAttribute("mflag",false);
 				
-				draft.setBit(builder.toString());
+				draft.setBit(tokens.toString());
 				draft.getGangguans().addAll(gangguans);
 				draft.getSolutions().addAll(solusions);
 				
 				List<Gejala> gejala = getGejalas();
 				
-				for(int idx=0;idx<builder.toString().length();idx++) {
+				for(int idx=0;idx<tokens.toString().length();idx++) {
 					
 					GejalaKasus gk = new GejalaKasus();
-					gk.setEnabled(builder.toString().charAt(idx) == '1');
+					gk.setEnabled(tokens.toString().charAt(idx) == '1');
 					gk.setGejalaID(gejala.get(idx).getId());
 					gk.setGejalaNote(gejala.get(idx).getNote());
 					
@@ -228,7 +195,7 @@ public class DiagnosaController {
 			@Override
 			public int compare(Gejala o1, Gejala o2) {
 				// TODO Auto-generated method stub
-				return o2.getIndex() - o1.getIndex();
+				return o2.getOnScore() - o1.getOnScore();
 			}
 		});
 		
