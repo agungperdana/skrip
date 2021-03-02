@@ -1,5 +1,10 @@
 package com.kratonsolution.skrip.leon.view.admin;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -43,117 +48,90 @@ public class KasusController {
 	}
 
 	@PostMapping("/admin/kasus-add")
-	public String add(@RequestParam("bit") String bit, 
-			@RequestParam("gang-en")boolean[] gangEN,
-			@RequestParam("gang-id")String[] gangID,
-			@RequestParam("gang-note")String[] gangNOTE,
-			@RequestParam("gej-en")boolean[] gejEN,
-			@RequestParam("gej-id")String[] gejID,
-			@RequestParam("gej-note")String[] gejNOTE,
-			@RequestParam("sol-en")boolean[] solEN,
-			@RequestParam("sol-id")String[] solID,
-			@RequestParam("sol-note")String[] solNOTE) {
+	public String add(@RequestParam("no") Optional<Integer> no, @RequestParam("swp") Optional<String> swp,
+			@RequestParam("disruptions") Optional<String[]> disruptionsOpt, 
+			@RequestParam("symtoms") Optional<String[]> symtomsOpt,
+			@RequestParam("solusions") Optional<String[]> solutionsOpt) {
 
-		Kasus kasus = null;
-		kasus = db.findById(bit, Kasus.class);
-		if(kasus == null) {
+		if(symtomsOpt.isPresent()) {
+
+			Kasus kasus = new Kasus();
+			kasus.setNumber(no.orElse(1000));
+			kasus.setReparationTime(swp.orElse(null));
 			
-			kasus = new Kasus();
+			List<String> requestSymtoms = new ArrayList<>();
+			requestSymtoms.addAll(Arrays.asList(symtomsOpt.get()));
+
+			//create tokens based on user selected symtoms
+			StringBuilder tokens = new StringBuilder();
+		
+			db.findAll(Gejala.class).forEach(sym -> {
+
+				GejalaKasus symtom = new GejalaKasus();
+				
+				if(requestSymtoms.stream().anyMatch(id -> id.equals(sym.getId()))) {
+
+					tokens.append(sym.getOnScore());
+					symtom.setEnabled(true);
+
+				}
+				else {
+					tokens.append(sym.getOffScore());
+				}
+				
+				symtom.setGejalaID(sym.getId());
+				symtom.setGejalaNote(sym.getNote());
+				
+				kasus.getSymtoms().add(symtom);
+			});
 			
-			kasus.setId(bit);
+			kasus.setToken(tokens.toString());
 			
-			for(int idx=0;idx<gangEN.length;idx++) {
-
-				GangguanKasus gk = new GangguanKasus();
-				gk.setEnabled(gangEN[idx]);
-				gk.setGangguanID(gangID[idx]);
-				gk.setGangguanNote(gangNOTE[idx]);
-
-//				kasus.getGangguans().add(gk);
+			if(!db.findAll(Kasus.class).stream().anyMatch(ob -> ob.getToken().equals(tokens))) {
+				
+				List<String> requestDisruptions = new ArrayList<>();
+				if(disruptionsOpt.isPresent()) {
+					requestDisruptions.addAll(Arrays.asList(disruptionsOpt.get()));
+				}
+	
+				List<String> requestSolutions = new ArrayList<>();
+				if(solutionsOpt.isPresent()) {
+					requestSolutions.addAll(Arrays.asList(solutionsOpt.get()));
+				}
+					
+				db.findAll(Gangguan.class).forEach(disrupt -> {
+					
+					GangguanKasus disruption = new GangguanKasus();
+					disruption.setGangguanID(disrupt.getId());
+					disruption.setGangguanNote(disrupt.getNote());
+					disruption.setEnabled(requestDisruptions.stream().anyMatch(d -> d.equals(disrupt.getId())));
+					
+					kasus.getDisruptions().add(disruption);
+				});
+				
+				db.findAll(Solusi.class).forEach(solusi -> {
+					
+					SolusiKasus solusion = new SolusiKasus();
+					solusion.setSolusiID(solusi.getId());
+					solusion.setSolusiNote(solusi.getNote());
+					solusion.setEnabled(requestSolutions.stream().anyMatch(s -> s.equals(solusi.getId())));
+					
+					kasus.getSolusions().add(solusion);
+				});
+				
+				//if data not exist than save
+				db.insert(kasus);
 			}
-
-			for(int idx=0;idx<gejEN.length;idx++) {
-
-				GejalaKasus gk = new GejalaKasus();
-				gk.setEnabled(gejEN[idx]);
-				gk.setGejalaID(gejID[idx]);
-				gk.setGejalaNote(gejNOTE[idx]);
-
-				kasus.getSymtoms().add(gk);
-			}
-
-			for(int idx=0;idx<solEN.length;idx++) {
-
-				SolusiKasus gk = new SolusiKasus();
-				gk.setEnabled(solEN[idx]);
-				gk.setSolusiID(solID[idx]);
-				gk.setSolusiNote(solNOTE[idx]);
-
-				kasus.getSolutions().add(gk);
-			}
-
-			db.insert(kasus);
 		}
 
 		return HOME;
 	}
-
+	
 	@GetMapping("/admin/kasus-preedit")
-	public String preedit(Model model, @RequestParam String id) {
+	public String preedit(Model model, @RequestParam("id") String id) {
 
 		model.addAttribute("kasus", db.findById(id, Kasus.class));
 		return "kasus-edit";
-	}
-
-	@PostMapping("/admin/kasus-edit")
-	public String edit(@RequestParam("id") String id, 
-			@RequestParam("gang-en")boolean[] gangEN,
-			@RequestParam("gang-id")String[] gangID,
-			@RequestParam("gej-en")boolean[] gejEN,
-			@RequestParam("gej-id")String[] gejID,
-			@RequestParam("sol-en")boolean[] solEN,
-			@RequestParam("sol-id")String[] solID) {
-
-		Kasus kasus = db.findById(id, Kasus.class);
-		if(kasus != null) {
-
-//			kasus.getGangguans().forEach(obj -> {
-//
-//				for(int idx=0;idx<gangID.length;idx++) {
-//
-//					if(gangID[idx].equals(obj.getGangguanID())) {
-//						obj.setEnabled(gangEN[idx]);
-//						break;
-//					}
-//				}
-//			});
-
-			kasus.getSymtoms().forEach(obj -> {
-
-				for(int idx=0;idx<gejID.length;idx++) {
-
-					if(gejID[idx].equals(obj.getGejalaID())) {
-						obj.setEnabled(gejEN[idx]);
-						break;
-					}
-				}
-			});
-
-			kasus.getSolutions().forEach(obj -> {
-
-				for(int idx=0;idx<solID.length;idx++) {
-
-					if(solID[idx].equals(obj.getSolusiID())) {
-						obj.setEnabled(solEN[idx]);
-						break;
-					}
-				}
-			});
-
-			db.save(kasus, Kasus.class);
-		}
-
-		return HOME;
 	}
 
 	@GetMapping("/admin/kasus-delete")

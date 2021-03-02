@@ -80,7 +80,7 @@ public class DiagnosaController {
 		
 			holder.addAttribute("match","100%");
 //			holder.addAttribute("gangguans", kasus.getGangguans());
-			holder.addAttribute("solusions", kasus.getSolutions());
+			holder.addAttribute("solusions", kasus.getSolusions());
 			holder.addAttribute("mflag", true);
 		}
 		else {
@@ -114,12 +114,12 @@ public class DiagnosaController {
 				
 				holder.addAttribute("match",buffer*100+"%");
 //				holder.addAttribute("gangguans", obj.getGangguans());
-				holder.addAttribute("solusions", obj.getSolutions());
+				holder.addAttribute("solusions", obj.getSolusions());
 				holder.addAttribute("mflag",false);
 				
 				draft.setBit(tokens.toString());
 //				draft.setGangguans(obj.getGangguans());
-				draft.setSolutions(obj.getSolutions());
+				draft.setSolutions(obj.getSolusions());
 				
 				List<Gejala> gejala = getGejalas();
 				

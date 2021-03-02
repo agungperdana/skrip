@@ -37,11 +37,11 @@
                 <span class="icon icon-light-up"></span>
                 <a style="cursor: pointer;" data-th-href="@{/admin/gejala-home}">Gejala</a>
               </span>
-              <span class="nav-group-item active">
+              <span class="nav-group-item">
                 <span class="icon icon-download"></span>
                 <a style="cursor: pointer;" data-th-href="@{/admin/solusi-home}">Solusi</a>
               </span>
-              <span class="nav-group-item">
+              <span class="nav-group-item active">
                 <span class="icon icon-monitor"></span>
                 <a style="cursor: pointer;" data-th-href="@{/admin/kasus-home}">Kasus</a>
               </span>
@@ -67,8 +67,8 @@
 			<table>
               <tbody>
               <tr>
-              	<td>Bit :</td>
-              	<td width="90%"><input name="bit" size="50" data-th-value="${kasus.bit}"/></td>
+              	<td>Tokens :</td>
+              	<td width="90%"><input size="50" data-th-value="${kasus.token}" disabled="disabled"/></td>
               </tr>
               <tr><td colspan="2">&nbsp;</td></tr>
               <tr>
@@ -84,7 +84,7 @@
 		                </tr>
 		              </thead>
 		              <tbody>
-		                <tr data-th-each="gejala:${kasus.gejalas}">
+		                <tr data-th-each="gejala:${kasus.symtoms}">
 		                	<td>
 		                		<select name="gej-en">
 		                			<option value="false" data-th-selected="${!gejala.enabled}">Tidak</option>
@@ -113,7 +113,7 @@
 		                </tr>
 		              </thead>
 		              <tbody>
-		                <tr data-th-each="gangguan:${kasus.gangguans}">
+		                <tr data-th-each="gangguan:${kasus.disruptions}">
 		                	<td>
 		                		<select name="gang-en">
 		                			<option value="false" data-th-selected="${!gangguan.enabled}">Tidak</option>
@@ -140,7 +140,7 @@
 		                </tr>
 		              </thead>
 		              <tbody>
-		                <tr data-th-each="solusi:${kasus.solutions}">
+		                <tr data-th-each="solusi:${kasus.solusions}">
 		                	<td>
 		                		<select name="sol-en">
 		                			<option value="false" data-th-selected="${!solusi.enabled}">Tidak</option>

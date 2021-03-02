@@ -51,41 +51,43 @@
               <thead>
                 <tr>
                   <th colspan="2" align="center">&nbsp;</th>
-                  <th width="10%" align="left">BIT</th>
+                  <th width="10%" align="left">Tokens</th>
                   <th width="25%" align="left">GEJALA</th>
                   <th width="25%" align="left">GANGGUAN</th>
                   <th width="25%" align="left">SOLUSI</th>
+                  <th width="25%" align="left">Penanganan</th>
                 </tr>
               </thead>
               <tbody>
                 <tr data-th-each="kasus:${kasuses}">
                 	<td valign="top">
-                		<a style="cursor: pointer;" data-th-href="@{/admin/kasus-preedit?id=}+${kasus.bit}">
+                		<a style="cursor: pointer;" data-th-href="@{/admin/kasus-preedit?id=}+${kasus.id}">
                 			<span class="icon icon-plus-circled"></span>Ubah
                 		</a>
                 	</td>
                   	<td valign="top">
-                  		<a style="cursor: pointer;" data-th-href="@{/admin/kasus-delete?id=}+${kasus.bit}">
+                  		<a style="cursor: pointer;" data-th-href="@{/admin/kasus-delete?id=}+${kasus.id}">
                   		<span class="icon icon-cancel-circled"></span>
                   		Hapus
                   		</a>
                   	</td>	
-                  	<td valign="top" data-th-text="${kasus.bit}"/>
+                  	<td valign="top" data-th-text="${kasus.token}"/>
                   	<td>
-                  		<ul data-th-each="gejala:${kasus.gejalas}">
+                  		<ul data-th-each="gejala:${kasus.symtoms}">
                   			<li data-th-if="${gejala.enabled}" data-th-text="${gejala.gejalaNote}"/>
                   		</ul>
                   	</td>
                   	<td>
-                  		<ul data-th-each="gangguan:${kasus.gangguans}">
+                  		<ul data-th-each="gangguan:${kasus.disruptions}">
                   			<li data-th-if="${gangguan.enabled}" data-th-text="${gangguan.gangguanNote}"/>
                   		</ul>
                   	</td>
                   	<td>
-                  		<ul data-th-each="solusi:${kasus.solutions}">
+                  		<ul data-th-each="solusi:${kasus.solusions}">
                   			<li data-th-if="${solusi.enabled}" data-th-text="${solusi.solusiNote}"/>
                   		</ul>
                   	</td>
+                  	<td data-th-text="${kasus.reparationTime}"/>
                 </tr>
                </tbody>
               </table>

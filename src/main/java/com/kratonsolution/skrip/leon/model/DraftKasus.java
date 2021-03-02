@@ -60,7 +60,7 @@ public class DraftKasus {
 		kasus.setId(this.bit);
 //		kasus.setGangguans(this.gangguans);
 		kasus.setSymtoms(this.gejalas);
-		kasus.setSolutions(this.solutions);
+		kasus.setSolusions(this.solutions);
 		
 		
 		return kasus;

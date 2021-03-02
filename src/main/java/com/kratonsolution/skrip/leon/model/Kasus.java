@@ -13,13 +13,17 @@ public class Kasus {
 	@Id
 	private String id = UUID.randomUUID().toString();
 	
+	private int number;
+	
+	private String reparationTime;
+	
 	private String token;
 	
 	private Set<GangguanKasus> disruptions = new HashSet<>();
 	
 	private Set<GejalaKasus> symtoms = new HashSet<>();
 	
-	private Set<SolusiKasus> solutions = new HashSet<>();
+	private Set<SolusiKasus> solusions = new HashSet<>();
 	
 	public Kasus() {
 	}
@@ -30,6 +34,22 @@ public class Kasus {
 
 	public void setId(String bit) {
 		this.id = bit;
+	}
+
+	public int getNumber() {
+		return number;
+	}
+
+	public void setNumber(int number) {
+		this.number = number;
+	}
+
+	public String getReparationTime() {
+		return reparationTime;
+	}
+
+	public void setReparationTime(String reparationTime) {
+		this.reparationTime = reparationTime;
 	}
 
 	public String getToken() {
@@ -56,11 +76,11 @@ public class Kasus {
 		this.symtoms = gejalas;
 	}
 
-	public Set<SolusiKasus> getSolutions() {
-		return solutions;
+	public Set<SolusiKasus> getSolusions() {
+		return solusions;
 	}
 
-	public void setSolutions(Set<SolusiKasus> solutions) {
-		this.solutions = solutions;
+	public void setSolusions(Set<SolusiKasus> solutions) {
+		this.solusions = solutions;
 	}
 }

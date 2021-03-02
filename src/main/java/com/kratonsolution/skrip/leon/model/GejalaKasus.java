@@ -1,7 +1,6 @@
 package com.kratonsolution.skrip.leon.model;
 
 /**
- * 
  * @author Agung Dodi Perdana
  * @email agung.dodi.perdana@gmail.com
  * @version 2.0.0
