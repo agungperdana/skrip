@@ -79,7 +79,7 @@ public class DiagnosaController {
 		if(kasus != null) {
 		
 			holder.addAttribute("match","100%");
-			holder.addAttribute("gangguans", kasus.getGangguans());
+//			holder.addAttribute("gangguans", kasus.getGangguans());
 			holder.addAttribute("solusions", kasus.getSolutions());
 			holder.addAttribute("mflag", true);
 		}
@@ -95,7 +95,7 @@ public class DiagnosaController {
 			List<Kasus> list = db.findAll(Kasus.class);
 			for(Kasus db:list) {
 				
-                Map<CharSequence, Integer> rightVector = createVector(db.getBit());
+                Map<CharSequence, Integer> rightVector = createVector(db.getId());
                 
                 double similarity = cosine.cosineSimilarity(leftVector, rightVector);
 
@@ -110,15 +110,15 @@ public class DiagnosaController {
 			
 			if(obj != null && buffer > 0.5d) {
 				
-				log.info("Kemiripan tertinggi dengan {} jumblah bit {}", obj.getBit(), obj.getBit().length());
+				log.info("Kemiripan tertinggi dengan {} jumblah bit {}", obj.getId(), obj.getId().length());
 				
 				holder.addAttribute("match",buffer*100+"%");
-				holder.addAttribute("gangguans", obj.getGangguans());
+//				holder.addAttribute("gangguans", obj.getGangguans());
 				holder.addAttribute("solusions", obj.getSolutions());
 				holder.addAttribute("mflag",false);
 				
 				draft.setBit(tokens.toString());
-				draft.setGangguans(obj.getGangguans());
+//				draft.setGangguans(obj.getGangguans());
 				draft.setSolutions(obj.getSolutions());
 				
 				List<Gejala> gejala = getGejalas();

@@ -2,3 +2,21 @@
 {"id":"e8a040e7-7951-4422-92b8-e3b136f66366","onScore":10,"offScore":11,"note":"BTS dalam kondisi down"}
 {"id":"afcf5334-b136-4ef8-85c8-b4fe3ec2283f","onScore":12,"offScore":13,"note":"VLAN tidak terdeteksi"}
 {"id":"7630c8ae-1633-446f-81d0-146406057589","onScore":14,"offScore":15,"note":"Sinyal telepon selular mati"}
+{"id":"8e6c4a36-22da-45ba-898f-f23ea6920e51","onScore":16,"offScore":17,"note":"BTS bad performance"}
+{"id":"cebcc396-2281-4673-94d2-14d2c6dc00fe","onScore":18,"offScore":19,"note":"Sinyal tidak tertransmisikan"}
+{"id":"987376ad-b164-46a0-bb53-3ffc58e5558c","onScore":20,"offScore":21,"note":"Block call pada pelanggan"}
+{"id":"ab463839-7cd9-4aa8-b805-4d7db5b27e12","onScore":22,"offScore":23,"note":"Service link pihak ketiga down"}
+{"id":"2cc46a41-d654-418e-987d-e9c79fee4375","onScore":24,"offScore":25,"note":"Sinyal salah satu service hilang"}
+{"id":"78577e66-0a6d-4279-8f30-aa1c9e2247bf","onScore":26,"offScore":27,"note":"Sinyal terdeteksi di monitor NOC"}
+{"id":"a1b67d03-d3e2-401f-b193-c2a95f3ed05f","onScore":28,"offScore":29,"note":"Sambungan komunikasi BTS terputus"}
+{"id":"efd29304-44d2-4bab-9377-12727dd4a018","onScore":30,"offScore":31,"note":"Transmisi down"}
+{"id":"32c77c78-89a1-4b17-a5e0-bfc362f897ea","onScore":32,"offScore":33,"note":"Error pada rangkaian digital"}
+{"id":"8115e6b5-a0c0-49ca-96db-bb0dadc734f9","onScore":34,"offScore":35,"note":"Sinyal telepon seluler tidak stabil"}
+{"id":"2bcc7c15-8e83-499a-aeeb-aa6a57211510","onScore":36,"offScore":37,"note":"Alarm muncul pada hub site"}
+{"id":"9e6966af-9232-4fe2-993b-ecb9af7d8cf7","onScore":38,"offScore":39,"note":"Suhu shelter diatas batas ambang"}
+{"id":"0815013a-1ea2-45e9-b174-64ceabf161d3","onScore":40,"offScore":41,"note":"Suhu recty  tinggi"}
+{"id":"0cd296cb-08f6-4bca-89f5-f406f45e679c","onScore":42,"offScore":43,"note":"Muncul alarm di modul"}
+{"id":"dfdd6f9f-559b-45db-9c2d-f500e68a15b8","onScore":44,"offScore":45,"note":"PMU / PSU mati"}
+{"id":"07ad9abc-3382-4c2b-a6bf-6d964594106b","onScore":46,"offScore":47,"note":"PSU tidak beraturan"}
+{"id":"e991f060-47fb-46f6-b359-3ae9b5647df0","onScore":48,"offScore":49,"note":"Monitor modul service menyala merah"}
+{"id":"0713aa8f-d43b-43f2-86f8-5a769f00629b","onScore":50,"offScore":51,"note":"Internet down"}

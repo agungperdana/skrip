@@ -2,6 +2,7 @@ package com.kratonsolution.skrip.leon.model;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.UUID;
 
 import io.jsondb.annotation.Document;
 import io.jsondb.annotation.Id;
@@ -10,40 +11,49 @@ import io.jsondb.annotation.Id;
 public class Kasus {
 
 	@Id
-	private String bit;
+	private String id = UUID.randomUUID().toString();
 	
-	private Set<GangguanKasus> gangguans = new HashSet<>();
+	private String token;
 	
-	private Set<GejalaKasus> gejalas = new HashSet<>();
+	private Set<GangguanKasus> disruption = new HashSet<>();
+	
+	private Set<GejalaKasus> symtoms = new HashSet<>();
 	
 	private Set<SolusiKasus> solutions = new HashSet<>();
 	
 	public Kasus() {
-		// TODO Auto-generated constructor stub
 	}
 
-	public Set<GangguanKasus> getGangguans() {
-		return gangguans;
+	public String getId() {
+		return id;
 	}
 
-	public void setGangguans(Set<GangguanKasus> gangguans) {
-		this.gangguans = gangguans;
+	public void setId(String bit) {
+		this.id = bit;
 	}
 
-	public String getBit() {
-		return bit;
+	public String getToken() {
+		return token;
 	}
 
-	public void setBit(String bit) {
-		this.bit = bit;
+	public void setToken(String token) {
+		this.token = token;
 	}
 
-	public Set<GejalaKasus> getGejalas() {
-		return gejalas;
+	public Set<GangguanKasus> getDisruption() {
+		return disruption;
 	}
 
-	public void setGejalas(Set<GejalaKasus> gejalas) {
-		this.gejalas = gejalas;
+	public void setDisruption(Set<GangguanKasus> disruption) {
+		this.disruption = disruption;
+	}
+
+	public Set<GejalaKasus> getSymtoms() {
+		return symtoms;
+	}
+
+	public void setSymtoms(Set<GejalaKasus> gejalas) {
+		this.symtoms = gejalas;
 	}
 
 	public Set<SolusiKasus> getSolutions() {

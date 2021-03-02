@@ -1,1 +1,13 @@
 {"schemaVersion":"1.0"}
+{"id":"a47893ee-d2bb-4065-889b-8f1a1ee745dc","index":0,"note":"Loss configuration"}
+{"id":"5f9418a3-0e68-433f-8303-94e74deb6c6b","index":0,"note":"Standing wave / VSWR"}
+{"id":"0ff0387a-e91e-4a89-8ccd-57f20fc07b06","index":0,"note":"Link 3rd party (pihak ketiga) down"}
+{"id":"1af73587-9f69-419d-a3e3-55c874e560c0","index":0,"note":"Bad  RSL"}
+{"id":"716b7d66-2177-4f09-9b13-1f046d7996ef","index":0,"note":"Hub site down"}
+{"id":"dbdc69c1-3c36-424d-99a8-8882b22e3f8d","index":0,"note":"High temperature"}
+{"id":"fe36b0b0-e6a7-4a55-8f72-4e11b792d36a","index":0,"note":"Modul power faulty"}
+{"id":"09b8f8b0-5cf6-4ca3-a2f2-21919259bb7c","index":0,"note":"Power off"}
+{"id":"45ffe2ee-6e0f-4abe-980e-e2cceea86fee","index":0,"note":"Modul service down"}
+{"id":"0901d584-8833-4e90-86b4-3baf8ee48820","index":0,"note":"RTWP"}
+{"id":"fb1c2d80-79f7-49fd-9728-e68d2a8c2fd6","index":0,"note":"Slot faulty"}
+{"id":"bc74f59b-3931-448f-ae7b-e443f8af76be","index":0,"note":"Board faulty"}

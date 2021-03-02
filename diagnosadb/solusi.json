@@ -1,1 +1,42 @@
 {"schemaVersion":"1.0"}
+{"id":"0c538376-6613-4edd-bed8-a4d4d57fea32","note":"Reconfiguration RTN"}
+{"id":"6c1f5a39-e31f-4eb6-be86-e086058bf729","note":"Cek jumper"}
+{"id":"3d0a5b13-80a0-4ecc-8d7b-0b5805014004","note":"Cek combiner"}
+{"id":"ee179e19-749c-4879-b75d-478112e4d92c","note":"Cek boar mrfu & wrfu"}
+{"id":"15d3eca5-1f13-4371-9938-0b98e5af132e","note":"Cek konektor modul"}
+{"id":"c8841ae2-1aa5-407d-a564-67c2ffdbca65","note":"Cek kabel feeder"}
+{"id":"290e57b6-15cb-447e-a919-19ee89273026","note":"Hubungi pihak ketiga"}
+{"id":"a824101b-197a-48e3-8922-0b9df1269041","note":"Ubah jalur VLAN"}
+{"id":"34df6eeb-a656-4f06-87bf-9c7162242205","note":"Repointing mw"}
+{"id":"ff238acf-d681-44f0-a84f-7fe2bcd668e0","note":"Reroute"}
+{"id":"32895412-211c-4516-8484-fa1ccc0d59b6","note":"Ganti frekuensi"}
+{"id":"07243678-1d38-4dd1-9ed0-661081bd5a80","note":"Upgrade link"}
+{"id":"6be1e4f3-f961-4f84-b752-882354341394","note":"Cek near end site / hub site"}
+{"id":"cfa585d9-3614-4d7d-a34b-665b852472bd","note":"Cek satu sisi site"}
+{"id":"84a39f9a-2aa4-4228-a729-ca60bb3a6187","note":"Cek kedua site"}
+{"id":"ac0b871a-ee8b-4c22-8343-1ef54e412cf0","note":"Service AC"}
+{"id":"dcf8a9a6-f3e3-4894-9d54-e9f1e317426f","note":"Ganti kipas"}
+{"id":"8427dab7-966f-4508-8d83-4032f74371db","note":"Bersihkan modul"}
+{"id":"bb817d5d-fa6c-4f5b-8281-e698db8c3695","note":"Cek fun modul"}
+{"id":"5c0d5dab-0881-4c11-bed3-5d5887dfaa7b","note":"Cek kabel power"}
+{"id":"402485fb-c50c-4f28-8fcc-318fc164a4fc","note":"Ganti modul"}
+{"id":"ced2a103-80d8-420c-97b5-843e73c62724","note":"Backup genset"}
+{"id":"a01a6c11-3209-40dc-9218-557b34858da1","note":"Gunakan baterai/ganti baterai"}
+{"id":"baceb76b-1425-460b-ac3c-ba1402d152d4","note":"Gunakan genset permanent"}
+{"id":"83aa0caa-aea9-489a-8528-b1c7e34a22e5","note":"Gunakan daya cadangan lainnya"}
+{"id":"1c3a898c-1aed-471a-a47c-4109d87cf771","note":"Hubungi pln jika ada trouble lain pada power"}
+{"id":"1b62d10c-9a62-469c-90aa-9ec0021f785c","note":"Cek board MRFU, WRFU, RRU SFV"}
+{"id":"55803d1e-bca4-45b3-84e5-729486d25492","note":"Cek kabel cpri"}
+{"id":"23b28865-2dfb-4ad9-9bb3-0b7e483ceca7","note":"Switch  board"}
+{"id":"3d8cdf7b-d2d1-4b6d-b331-c5a6a11e7d68","note":"Ganti board"}
+{"id":"8b81ddae-d82d-4ca8-9ca9-50e30c775393","note":"Switch kabel CPRI"}
+{"id":"338b42c1-271e-4d65-9a16-f5d00a460aaf","note":"Ganti kabel"}
+{"id":"0e3b2080-4f0f-4f6f-ab68-2c86f7d74b74","note":"Cek combiner"}
+{"id":"d7764b34-432d-411a-b004-37c0507abc41","note":"Ganti combiner jika rusak"}
+{"id":"50efe469-55ee-4610-a131-debcebcbb9ea","note":"Cek kabel jumper"}
+{"id":"9703009d-6b17-46b3-8f9e-a2fa3c6e14dc","note":"Pindahkan board ke slot lain"}
+{"id":"d6592b62-01bd-4c93-8e89-a75f24b5c2d8","note":"Jika board tidak terdeteksi"}
+{"id":"2d1b67e1-7e01-483f-9e43-f4a9efcac4db","note":"Ganti slot"}
+{"id":"5c9c1667-0463-4687-8d6b-1cd4bf10c56e","note":"Pindahkan board pada slot lain"}
+{"id":"314b3791-6a0f-4bec-9413-8a3e304d5a49","note":"Jika masih board faulty"}
+{"id":"0f197814-4ae8-43a6-b6a8-b97dd3028e03","note":"Ganti board"}

@@ -1,11 +1,10 @@
-/**
- * 
- */
 package com.kratonsolution.skrip.leon.model;
 
 /**
- * @author Leoni
- *
+ * 
+ * @author Agung Dodi Perdana
+ * @email agung.dodi.perdana@gmail.com
+ * @version 2.0.0
  */
 public class GejalaKasus {
 

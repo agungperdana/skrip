@@ -60,7 +60,7 @@ public class KasusController {
 			
 			kasus = new Kasus();
 			
-			kasus.setBit(bit);
+			kasus.setId(bit);
 			
 			for(int idx=0;idx<gangEN.length;idx++) {
 
@@ -69,7 +69,7 @@ public class KasusController {
 				gk.setGangguanID(gangID[idx]);
 				gk.setGangguanNote(gangNOTE[idx]);
 
-				kasus.getGangguans().add(gk);
+//				kasus.getGangguans().add(gk);
 			}
 
 			for(int idx=0;idx<gejEN.length;idx++) {
@@ -79,7 +79,7 @@ public class KasusController {
 				gk.setGejalaID(gejID[idx]);
 				gk.setGejalaNote(gejNOTE[idx]);
 
-				kasus.getGejalas().add(gk);
+				kasus.getSymtoms().add(gk);
 			}
 
 			for(int idx=0;idx<solEN.length;idx++) {
@@ -117,18 +117,18 @@ public class KasusController {
 		Kasus kasus = db.findById(id, Kasus.class);
 		if(kasus != null) {
 
-			kasus.getGangguans().forEach(obj -> {
+//			kasus.getGangguans().forEach(obj -> {
+//
+//				for(int idx=0;idx<gangID.length;idx++) {
+//
+//					if(gangID[idx].equals(obj.getGangguanID())) {
+//						obj.setEnabled(gangEN[idx]);
+//						break;
+//					}
+//				}
+//			});
 
-				for(int idx=0;idx<gangID.length;idx++) {
-
-					if(gangID[idx].equals(obj.getGangguanID())) {
-						obj.setEnabled(gangEN[idx]);
-						break;
-					}
-				}
-			});
-
-			kasus.getGejalas().forEach(obj -> {
+			kasus.getSymtoms().forEach(obj -> {
 
 				for(int idx=0;idx<gejID.length;idx++) {
 

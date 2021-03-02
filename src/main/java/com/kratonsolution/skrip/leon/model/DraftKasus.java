@@ -57,9 +57,9 @@ public class DraftKasus {
 	public Kasus toKasus() {
 		
 		Kasus kasus = new Kasus();
-		kasus.setBit(this.bit);
-		kasus.setGangguans(this.gangguans);
-		kasus.setGejalas(this.gejalas);
+		kasus.setId(this.bit);
+//		kasus.setGangguans(this.gangguans);
+		kasus.setSymtoms(this.gejalas);
 		kasus.setSolutions(this.solutions);
 		
 		
