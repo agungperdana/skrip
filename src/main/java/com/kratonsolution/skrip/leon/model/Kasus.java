@@ -15,7 +15,7 @@ public class Kasus {
 	
 	private String token;
 	
-	private Set<GangguanKasus> disruption = new HashSet<>();
+	private Set<GangguanKasus> disruptions = new HashSet<>();
 	
 	private Set<GejalaKasus> symtoms = new HashSet<>();
 	
@@ -40,12 +40,12 @@ public class Kasus {
 		this.token = token;
 	}
 
-	public Set<GangguanKasus> getDisruption() {
-		return disruption;
+	public Set<GangguanKasus> getDisruptions() {
+		return disruptions;
 	}
 
-	public void setDisruption(Set<GangguanKasus> disruption) {
-		this.disruption = disruption;
+	public void setDisruptions(Set<GangguanKasus> disruption) {
+		this.disruptions = disruption;
 	}
 
 	public Set<GejalaKasus> getSymtoms() {

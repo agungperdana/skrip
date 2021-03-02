@@ -35,8 +35,8 @@ public class KasusController {
 	@GetMapping("/admin/kasus-preadd")
 	public String preadd(Model model) {
 
-		model.addAttribute("gangguans", db.findAll(Gangguan.class));
-		model.addAttribute("gejalas", db.findAll(Gejala.class));
+		model.addAttribute("disruptions", db.findAll(Gangguan.class));
+		model.addAttribute("symtoms", db.findAll(Gejala.class));
 		model.addAttribute("solusions", db.findAll(Solusi.class));
 
 		return "kasus-add";

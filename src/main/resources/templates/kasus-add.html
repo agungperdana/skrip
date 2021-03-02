@@ -37,11 +37,11 @@
                 <span class="icon icon-light-up"></span>
                 <a style="cursor: pointer;" data-th-href="@{/admin/gejala-home}">Gejala</a>
               </span>
-              <span class="nav-group-item active">
+              <span class="nav-group-item ">
                 <span class="icon icon-download"></span>
                 <a style="cursor: pointer;" data-th-href="@{/admin/solusi-home}">Solusi</a>
               </span>
-              <span class="nav-group-item">
+              <span class="nav-group-item active">
                 <span class="icon icon-monitor"></span>
                 <a style="cursor: pointer;" data-th-href="@{/admin/kasus-home}">Kasus</a>
               </span>
@@ -53,34 +53,80 @@
           </div>
 
           <div class="pane">
-          	<header class="toolbar toolbar-header">
-		  		<h1 class="title">&nbsp;&nbsp;&nbsp;</h1>
-		
-		  		<div class="toolbar-actions">
-		    		<button class="btn btn-default">
-					      <span class="icon icon-cancel-squared icon-text"></span>
-					      Batalkan
-					</button>
-					<button class="btn btn-default">
-					      <span class="icon icon-floppy icon-text"></span>
-					      Simpan
-					</button>
-		  		</div>
-			</header>
-			<div class="tab-group">
-			  <div class="tab-item">
-			    <span class="icon icon-cancel icon-close-tab"></span>
-			    Daftar Gejala
-			  </div>
-			  <div class="tab-item active">
-			    <span class="icon icon-cancel icon-close-tab"></span>
-			    Jenis Gangguan
-			  </div>
-			  <div class="tab-item">
-			    <span class="icon icon-cancel icon-close-tab"></span>
-			    Solusi Penanganan
-			  </div>
-			</div>
+			<form data-th-action="@{/admin/gejala-add}" method="POST">
+	          	<div class="toolbar-actions">
+	          		<button class="btn btn-negative" onclick="javascript:window.location='/admin/gejala-home'">
+	        			<span class="icon icon-cancel-circled"></span>
+	        			Batalkan
+	      			</button>
+	      			<button type="submit" class="btn btn-positive">
+	        			<span class="icon icon-plus-circled"></span>
+	        			Simpan
+	      			</button>
+	          	</div>
+				<table class="table-striped">
+	              <tbody>
+	              <tr>
+	              	<td>Nomor Kasus</td>
+	              	<td width="1%">:</td>
+	              	<td width="90%"><input name="no" size="30"/></td>
+	              </tr>
+	              <tr>
+	              	<td>Standar Waktu Penanganan</td>
+	              	<td width="1%">:</td>
+	              	<td width="90%"><input name="swp" size="75"/></td>
+	              </tr>
+	              <tr>
+	              	<td colspan="3" style="border-bottom: solid silver 1px;margin: 5px;">&nbsp;</td>
+	              </tr>
+	              <tr>
+	              	<td>Jenis Gangguan</td>
+	              	<td width="1%">:</td>
+	              	<td width="90%">
+	              		<table style="border:none;width: 100%">
+	              		<tr data-th-each="dist:${disruptions}">
+	              			<td width="1%" align="right"><input type="checkbox" name="disruptions" data-th-value="${dist.id}"/></td>
+	              			<td width="99%" align="left" data-th-text="${dist.note}"/>
+	              		</tr>
+	              		</table>
+	              	</td>
+	              </tr>
+	              <tr>
+	              	<td colspan="3" style="border-bottom: solid silver 1px;margin: 5px;">&nbsp;</td>
+	              </tr>
+	              <tr>
+	              	<td>Gejala</td>
+	              	<td width="1%">:</td>
+	              	<td width="90%">
+	              		<table style="border:none;width: 100%">
+	              		<tr data-th-each="dist:${symtoms}">
+	              			<td width="1%" align="right"><input type="checkbox" name="symtoms" data-th-value="${dist.id}"/></td>
+	              			<td width="99%" align="left" data-th-text="${dist.note}"/>
+	              		</tr>
+	              		</table>
+	              	</td>
+	              </tr>
+	              <tr>
+	              	<td colspan="3" style="border-bottom: solid silver 1px;margin: 5px;">&nbsp;</td>
+	              </tr>
+	              <tr>
+	              	<td>Penanganan</td>
+	              	<td width="1%">:</td>
+	              	<td width="90%">
+	              		<table style="border:none;width: 100%">
+	              		<tr data-th-each="dist:${solusions}">
+	              			<td width="1%" align="right"><input type="checkbox" name="solusions" data-th-value="${dist.id}"/></td>
+	              			<td width="99%" align="left" data-th-text="${dist.note}"/>
+	              		</tr>
+	              		</table>
+	              	</td>
+	              </tr>
+	              <tr>
+	              	<td colspan="3" style="border-bottom: solid silver 1px;margin: 5px;">&nbsp;</td>
+	              </tr>
+	               </tbody>
+	              </table>
+	              </form>
           </div>
         </div>
       </div>
