@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Sismtem Diagnosa BTS | Info & Bantuan</title>
+        <link data-th-href="@{/assets/img/favicon.ico}" rel="icon" type="image/x-icon"/>
+        <link data-th-href="@{/css/google-apis-css1.css}" rel="stylesheet" />
+        <link data-th-href="@{/css/google-apis-css2.css}" rel="stylesheet" type="text/css" />
+        <link data-th-href="@{/css/magnific-popup.min.css}" rel="stylesheet" />
+        <link data-th-href="@{/css/styles.css}" rel="stylesheet" />
+    </head>
+    <body id="page-top">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+            <div class="container">
+                <a class="navbar-brand js-scroll-trigger" data-th-href="@{/}">Beranda</a>
+                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto my-2 my-lg-0">
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger">Info & Batuan</a></li>
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" data-th-href="@{/browse-cases}">Data Kasus</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- About-->
+        <section class="page-section bg-primary" id="about">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 text-center">
+                        <h2 class="text-white mt-0">Apa itu ALGORITMA COSINE</h2>
+                        <hr class="divider light my-4" />
+                        <p class="text-white-50 mb-4">
+                        
+	                        <strong>Cosine similarity</strong> is a measure of similarity between two non-zero vectors of an inner product space. It is defined to equal the cosine of the angle between them, which is also the same as the inner product of the same vectors normalized to both have length 1. The cosine of 0° is 1, and it is less than 1 for any angle in the interval (0, π] radians. It is thus a judgment of orientation and not magnitude: two vectors with the same orientation have a cosine similarity of 1, two vectors oriented at 90° relative to each other have a similarity of 0, and two vectors diametrically opposed have a similarity of -1, independent of their magnitude. The cosine similarity is particularly used in positive space, where the outcome is neatly bounded in [ 0 , 1 ] {\displaystyle [0,1]} [0,1]. The name derives from the term "direction cosine": in this case, unit vectors are maximally "similar" if they're parallel and maximally "dissimilar" if they're orthogonal (perpendicular). This is analogous to the cosine, which is unity (maximum value) when the segments subtend a zero angle and zero (uncorrelated) when the segments are perpendicular.
+	
+							These bounds apply for any number of dimensions, and the cosine similarity is most commonly used in high-dimensional positive spaces. For example, in information retrieval and text mining, each term is notionally assigned a different dimension and a document is characterised by a vector where the value in each dimension corresponds to the number of times the term appears in the document. Cosine similarity then gives a useful measure of how similar two documents are likely to be in terms of their subject matter.[1]
+							
+							The technique is also used to measure cohesion within clusters in the field of data mining.[2]
+							
+							The term cosine distance is often used for the complement in positive space, that is: D C ( A , B ) = 1 − S C ( A , B ) , {\displaystyle D_{C}(A,B)=1-S_{C}(A,B),} {\displaystyle D_{C}(A,B)=1-S_{C}(A,B),} where D C {\displaystyle D_{C}} D_C is the cosine distance and S C {\displaystyle S_{C}} S_{C} is the cosine similarity. It is important to note, however, that this is not a proper distance metric as it does not have the triangle inequality property—or, more formally, the Schwarz inequality—and it violates the coincidence axiom; to repair the triangle inequality property while maintaining the same ordering, it is necessary to convert to angular distance (see below).
+							
+							One advantage of cosine similarity is its low-complexity, especially for sparse vectors: only the non-zero dimensions need to be considered.
+							
+							Other names of cosine similarity are Orchini similarity and the Tucker coefficient of congruence; Ochiai similarity (see below) is cosine similarity applied to binary data. 
+                        
+                        </p>
+                        <a class="btn btn-light btn-xl js-scroll-trigger" data-th-href="@{survey}">Mulai Diagnosa</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Footer-->
+        <footer class="bg-light py-5">
+            <div class="container"><div class="small text-center text-muted">Copyright © 2020 - Start Bootstrap</div></div>
+        </footer>
+        <script data-th-src="@{/js/jquery-3.5.1.slim.min.js}"></script>
+        <script data-th-src="@{/js/bootstrap.bundle.min.js}"></script>
+        <script data-th-src="@{/js/jquery.easing.min.js}"></script>
+        <script data-th-src="@{/js/jquery.magnific-popup.min.js}"></script>
+        <script data-th-src="@{/js/scripts.js}"></script>
+        <script data-th-src="@{/js/all.js}"></script>
+    </body>
+</html>

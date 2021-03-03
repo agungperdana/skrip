@@ -30,6 +30,13 @@ public class KasusController {
 	@Autowired
 	private JsonDBTemplate db;
 
+	@GetMapping("/browse-cases")
+	public String cases(Model model) {
+
+		model.addAttribute("kasuses", db.findAll(Kasus.class));
+		return "browse-cases";
+	}
+	
 	@GetMapping("/admin/kasus-home")
 	public String home(Model model) {
 

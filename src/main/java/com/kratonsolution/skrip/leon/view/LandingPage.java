@@ -24,12 +24,23 @@ public class LandingPage {
 	private JsonDBTemplate temp;
 	
 	@GetMapping("/")
-	public String landing(Model model) {
+	public String landing() {
+		return "index";
+	}
+	
+	@GetMapping("/info-and-help")
+	public String infoHelp(Model model) {
+		
+		return "info-and-help";
+	}
+	
+	@GetMapping("/survey")
+	public String survey(Model model) {
 		
 		List<Gejala> quetions = temp.findAll(Gejala.class);
 		Collections.sort(quetions,(a, b)-> a.getOnScore() - b.getOnScore());
 		
 		model.addAttribute("quetions", quetions);
-		return "index";
+		return "survey";
 	}
 }
