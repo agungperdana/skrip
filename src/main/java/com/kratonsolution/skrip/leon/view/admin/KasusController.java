@@ -33,7 +33,7 @@ public class KasusController {
 	@GetMapping("/browse-cases")
 	public String cases(Model model) {
 
-		model.addAttribute("kasuses", db.findAll(Kasus.class));
+		model.addAttribute("cases", db.findAll(Kasus.class));
 		return "browse-cases";
 	}
 	

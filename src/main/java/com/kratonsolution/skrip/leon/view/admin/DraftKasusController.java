@@ -1,5 +1,8 @@
 package com.kratonsolution.skrip.leon.view.admin;
 
+import java.util.Arrays;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,50 +38,31 @@ public class DraftKasusController {
 	}
 
 	@PostMapping("/admin/draft-kasus-edit")
-	public String edit(@RequestParam("id") String id, 
-			@RequestParam("gang-en")boolean[] gangEN,
-			@RequestParam("gang-id")String[] gangID,
-			@RequestParam("gej-en")boolean[] gejEN,
-			@RequestParam("gej-id")String[] gejID,
-			@RequestParam("sol-en")boolean[] solEN,
-			@RequestParam("sol-id")String[] solID) {
+	public String edit(@RequestParam("id") String id,
+			@RequestParam("no") int number,
+			@RequestParam("pwp") String pwp,
+			@RequestParam("symtoms") Optional<String[]> symtomsOpt,
+			@RequestParam("disruptions") Optional<String[]> disruptions,
+			@RequestParam("solusions") Optional<String[]> solusions){
 
 		DraftKasus draft = db.findById(id, DraftKasus.class);
 		if(draft != null) {
 
-			draft.getDisruptions().forEach(obj -> {
+			draft.setNumber(number);
+			draft.setReparationTime(pwp);
+			
+			draft.getSymtoms().forEach(symtom -> {
+				symtom.setEnabled(symtomsOpt.isPresent() && Arrays.asList(symtomsOpt.get()).stream().anyMatch(p->p.equals(symtom.getGejalaID())));				
 
-				for(int idx=0;idx<gangID.length;idx++) {
-
-					if(gangID[idx].equals(obj.getGangguanID())) {
-						obj.setEnabled(gangEN[idx]);
-						break;
-					}
-				}
 			});
-
-			draft.getSymtoms().forEach(obj -> {
-
-				for(int idx=0;idx<gejID.length;idx++) {
-
-					if(gejID[idx].equals(obj.getGejalaID())) {
-						obj.setEnabled(gejEN[idx]);
-						break;
-					}
-				}
+			draft.getDisruptions().forEach(disrup->{
+				disrup.setEnabled(disruptions.isPresent() && Arrays.asList(disruptions.get()).stream().anyMatch(p->p.equals(disrup.getGangguanID())));
 			});
-
-			draft.getSolusions().forEach(obj -> {
-
-				for(int idx=0;idx<solID.length;idx++) {
-
-					if(solID[idx].equals(obj.getSolusiID())) {
-						obj.setEnabled(solEN[idx]);
-						break;
-					}
-				}
+			
+			draft.getSolusions().forEach(solusion -> {
+				solusion.setEnabled(solusions.isPresent() && Arrays.asList(solusions.get()).stream().anyMatch(p->p.equals(solusion.getSolusiID())));
 			});
-
+			
 			db.save(draft, DraftKasus.class);
 		}
 

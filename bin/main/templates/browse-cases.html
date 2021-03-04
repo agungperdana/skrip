@@ -27,17 +27,42 @@
             </div>
         </nav>
 
-        <!-- About-->
-        <section class="page-section bg-primary" id="about">
+        <section class="page-section" id="cases">
             <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-lg-8 text-center">
-                        <h2 class="text-white mt-0">We've got what you need!</h2>
-                        <hr class="divider light my-4" />
-                        <p class="text-white-50 mb-4">Start Bootstrap has everything you need to get your new website up and running in no time! Choose one of our open source, free to download, and easy to use themes! No strings attached!</p>
-                        <a class="btn btn-light btn-xl js-scroll-trigger" href="#services">Get Started!</a>
-                    </div>
-                </div>
+            	<h2 class="text-center mt-0">BASIS DATA KASUS</h2>
+                <hr class="divider my-4" />
+               	<table border="solid silver 1px" style="width: 100%">
+               	<thead>
+               	<tr>
+               		<th align="center">No</th>
+               		<th align="center">Jenis Gangguan</th>
+               		<th align="center">Waktu Perbaikan</th>
+               		<th align="center">Gejala</th>
+               		<th align="center">Solusi</th>
+               	</tr>
+               	</thead>
+               	<tbody>
+               	<tr data-th-each="case:${cases}">
+               		<td valign="top" align="center" data-th-text="${case.number}"/>
+               		<td style="vertical-align: top; text-align: left;">
+               			<ul data-th-each="disruption:${case.disruptions}">
+               				<li data-th-if="${disruption.enabled}" data-th-text="${disruption.gangguanNote}"/>
+               			</ul>
+               		</td>
+               		<td style="vertical-align: top; text-align: left;" data-th-text="${case.reparationTime}"/>
+               		<td style="vertical-align: top; text-align: left;">
+               			<ul data-th-each="symtom:${case.symtoms}">
+               				<li data-th-if="${symtom.enabled}" data-th-text="${symtom.gejalaNote}"/>
+               			</ul>
+               		</td>
+               		<td valign="top" style="text-align: left;">
+               			<ul data-th-each="solusion:${case.solusions}">
+               				<li data-th-if="${solusion.enabled}" data-th-text="${solusion.solusiNote}"/>
+               			</ul>
+               		</td>
+               	</tr>
+               	</tbody>
+                </table>
             </div>
         </section>
 

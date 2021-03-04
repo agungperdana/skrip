@@ -92,16 +92,9 @@
 		                </tr>
 		              </thead>
 		              <tbody>
-		                <tr data-th-each="gejala:${kasus.symtoms}">
-		                	<td>
-		                		<select name="gej-en">
-		                			<option value="false" data-th-selected="${!gejala.enabled}">Tidak</option>
-		                			<option value="true" data-th-selected="${gejala.enabled}">Ya</option>
-		                		</select>
-		                		<input type="hidden" name="gej-id" data-th-value="${gejala.gejalaID}"/>
-		                		<input type="hidden" name="gej-note" data-th-value="${gejala.gejalaNote}"/>
-		                	</td>	
-		                  	<td data-th-text="${gejala.gejalaNote}"/>
+		                <tr data-th-each="symtom:${kasus.symtoms}">
+		                	<td><input type="checkbox" name="symtoms" data-th-value="${symtom.gejalaID}" data-th-checked="${symtom.enabled}"/></td>	
+		                  	<td data-th-text="${symtom.gejalaNote}"/>
 		                </tr>
 		               </tbody>
 		              </table>
@@ -122,14 +115,7 @@
 		              </thead>
 		              <tbody>
 		                <tr data-th-each="gangguan:${kasus.disruptions}">
-		                	<td>
-		                		<select name="gang-en">
-		                			<option value="false" data-th-selected="${!gangguan.enabled}">Tidak</option>
-		                			<option value="true" data-th-selected="${gangguan.enabled}">Ya</option>
-		                		</select>
-		                		<input type="hidden" name="gang-id" data-th-value="${gangguan.gangguanID}"/>
-		                		<input type="hidden" name="gang-note" data-th-value="${gangguan.gangguanNote}"/>
-		                	</td>	
+		                	<td><input type="checkbox" name="disruptions" data-th-value="${gangguan.gangguanID}" data-th-checked="${gangguan.enabled}"/></td>
 		                  	<td data-th-text="${gangguan.gangguanNote}"/>
 		                </tr>
 		               </tbody>
@@ -149,14 +135,7 @@
 		              </thead>
 		              <tbody>
 		                <tr data-th-each="solusi:${kasus.solusions}">
-		                	<td>
-		                		<select name="sol-en">
-		                			<option value="false" data-th-selected="${!solusi.enabled}">Tidak</option>
-		                			<option value="true" data-th-selected="${solusi.enabled}">Ya</option>
-		                		</select>
-		                		<input type="hidden" name="sol-id" data-th-value="${solusi.solusiID}"/>
-		                		<input type="hidden" name="sol-note" data-th-value="${solusi.solusiNote}"/>
-		                	</td>	
+		                	<td><input type="checkbox" name="solusions" data-th-value="${solusi.solusiID}" data-th-checked="${solusi.enabled}"/></td>	
 		                  	<td data-th-text="${solusi.solusiNote}"/>
 		                </tr>
 		               </tbody>
