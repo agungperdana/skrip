@@ -45,46 +45,46 @@
               <thead>
                 <tr>
                   <th colspan="3" align="center">&nbsp;</th>
-                  <th width="10%" align="left">BIT</th>
-                  <th width="25%" align="left">GEJALA</th>
                   <th width="25%" align="left">GANGGUAN</th>
+                  <th width="25%" align="left">GEJALA</th>
                   <th width="25%" align="left">SOLUSI</th>
+                  <th width="25%" align="left">Waktu Perbaikan</th>
                 </tr>
               </thead>
               <tbody>
                 <tr data-th-each="kasus:${kasuses}">
-                	<td valign="top">
-                		<a style="cursor: pointer;" data-th-href="@{/admin/draft-kasus-convert?id=}+${kasus.bit}">
+                	<td valign="middle">
+                		<a style="cursor: pointer;" data-th-href="@{/admin/draft-kasus-convert?id=}+${kasus.id}">
                 			<span class="icon icon-minus-circled"></span>Konversi
                 		</a>
                 	</td>
-                	<td valign="top">
-                		<a style="cursor: pointer;" data-th-href="@{/admin/draft-kasus-preedit?id=}+${kasus.bit}">
+                	<td valign="middle">
+                		<a style="cursor: pointer;" data-th-href="@{/admin/draft-kasus-preedit?id=}+${kasus.id}">
                 			<span class="icon icon-plus-circled"></span>Ubah
                 		</a>
                 	</td>
-                  	<td valign="top">
-                  		<a style="cursor: pointer;" data-th-href="@{/admin/draft-kasus-delete?id=}+${kasus.bit}">
+                  	<td valign="middle">
+                  		<a style="cursor: pointer;" data-th-href="@{/admin/draft-kasus-delete?id=}+${kasus.id}">
                   		<span class="icon icon-cancel-circled"></span>
                   		Hapus
                   		</a>
                   	</td>	
-                  	<td valign="top" data-th-text="${kasus.bit}"/>
                   	<td>
-                  		<ul data-th-each="gejala:${kasus.gejalas}">
-                  			<li data-th-if="${gejala.enabled}" data-th-text="${gejala.gejalaNote}"/>
-                  		</ul>
-                  	</td>
-                  	<td>
-                  		<ul data-th-each="gangguan:${kasus.gangguans}">
+                  		<ul data-th-each="gangguan:${kasus.disruptions}">
                   			<li data-th-if="${gangguan.enabled}" data-th-text="${gangguan.gangguanNote}"/>
                   		</ul>
                   	</td>
                   	<td>
-                  		<ul data-th-each="solusi:${kasus.solutions}">
+                  		<ul data-th-each="gejala:${kasus.symtoms}">
+                  			<li data-th-if="${gejala.enabled}" data-th-text="${gejala.gejalaNote}"/>
+                  		</ul>
+                  	</td>
+                  	<td>
+                  		<ul data-th-each="solusi:${kasus.solusions}">
                   			<li data-th-if="${solusi.enabled}" data-th-text="${solusi.solusiNote}"/>
                   		</ul>
                   	</td>
+                  	<td data-th-text="${kasus.reparationTime}"/>
                 </tr>
                </tbody>
               </table>

@@ -63,6 +63,15 @@ public class DiagnosaController {
 			holder.addAttribute("solusions", kasus.getSolusions());
 			holder.addAttribute("reparationTime", kasus.getReparationTime());
 		}
+		else if(db.findOne(String.format("/.[token='%s']", inputTokens), DraftKasus.class) != null) {
+			
+			DraftKasus draft = db.findOne(String.format("/.[token='%s']", inputTokens), DraftKasus.class);
+			
+			holder.addAttribute("match", draft.getSimilarity()*100+"%");
+			holder.addAttribute("disruptions", draft.getDisruptions());
+			holder.addAttribute("solusions", draft.getSolusions());
+			holder.addAttribute("reparationTime", draft.getReparationTime());
+		}
 		else {
 
 			log.info("Tidak ditemukan kecocokan data");
@@ -95,6 +104,7 @@ public class DiagnosaController {
 				holder.addAttribute("reparationTime", obj.getReparationTime());
 
 				draft.setNumber(obj.getNumber());
+				draft.setSimilarity(buffer);
 				draft.setDisruptions(obj.getDisruptions());
 				draft.setSolusions(obj.getSolusions());
 				draft.setToken(inputTokens);
@@ -141,6 +151,7 @@ public class DiagnosaController {
 				holder.addAttribute("reparationTime", "Belum diketahui");
 
 				draft.setNumber(0);
+				draft.setSimilarity(buffer);
 				draft.setToken(inputTokens);
 				draft.getDisruptions().addAll(gangguans);
 				draft.getSolusions().addAll(solusions);

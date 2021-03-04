@@ -15,6 +15,8 @@ public class DraftKasus {
 	
 	private int number;
 	
+	private double similarity;
+	
 	private String token;
 	
 	private String reparationTime;
@@ -31,6 +33,14 @@ public class DraftKasus {
 		// TODO Auto-generated constructor stub
 	}
 	
+	public double getSimilarity() {
+		return similarity;
+	}
+
+	public void setSimilarity(double similarity) {
+		this.similarity = similarity;
+	}
+
 	public String getId() {
 		return id;
 	}
