@@ -46,7 +46,7 @@ public class DraftKasusController {
 		DraftKasus draft = db.findById(id, DraftKasus.class);
 		if(draft != null) {
 
-			draft.getGangguans().forEach(obj -> {
+			draft.getDisruptions().forEach(obj -> {
 
 				for(int idx=0;idx<gangID.length;idx++) {
 
@@ -57,7 +57,7 @@ public class DraftKasusController {
 				}
 			});
 
-			draft.getGejalas().forEach(obj -> {
+			draft.getSymtoms().forEach(obj -> {
 
 				for(int idx=0;idx<gejID.length;idx++) {
 
@@ -68,7 +68,7 @@ public class DraftKasusController {
 				}
 			});
 
-			draft.getSolutions().forEach(obj -> {
+			draft.getSolusions().forEach(obj -> {
 
 				for(int idx=0;idx<solID.length;idx++) {
 
