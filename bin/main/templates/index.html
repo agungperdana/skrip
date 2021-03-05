@@ -1,55 +1,224 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Sismtem Diagnosa BTS</title>
-        <link data-th-href="@{/assets/img/favicon.ico}" rel="icon" type="image/x-icon"/>
-        <link data-th-href="@{/css/google-apis-css1.css}" rel="stylesheet" />
-        <link data-th-href="@{/css/google-apis-css2.css}" rel="stylesheet" type="text/css" />
-        <link data-th-href="@{/css/magnific-popup.min.css}" rel="stylesheet" />
-        <link data-th-href="@{/css/styles.css}" rel="stylesheet" />
-    </head>
-    <body id="page-top">
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
-            <div class="container">
-                <a class="navbar-brand js-scroll-trigger">Beranda</a>
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ml-auto my-2 my-lg-0">
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" data-th-href="@{/info-and-help}">Info & Batuan</a></li>
-                        <li class="nav-item"><a class="nav-link js-scroll-trigger" data-th-href="@{/browse-cases}">Data Kasus</a></li>
-                    </ul>
-                </div>
+<html lang="en-US" dir="ltr">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- ===============================================-->
+    <!--    Document Title-->
+    <!-- ===============================================-->
+    <title>Cosine Engine</title>
+
+    <!-- ===============================================-->
+    <!--    Favicons-->
+    <!-- ===============================================-->
+    <link rel="apple-touch-icon" sizes="180x180" data-th-href="@{/assets/img/favicons/apple-touch-icon.png}">
+    <link rel="icon" type="image/png" sizes="32x32" data-th-href="@{/assets/img/favicons/favicon-32x32.png}">
+    <link rel="icon" type="image/png" sizes="16x16" data-th-href="@{/assets/img/favicons/favicon-16x16.png}">
+    <link rel="shortcut icon" type="image/x-icon" data-th-href="@{/assets/img/favicons/favicon.ico}">
+    <link rel="manifest" data-th-href="@{/assets/img/favicons/manifest.json}">
+    <link rel="stylesheet" data-th-href="@{/assets/css/google-apis-cevo.css}">
+    <meta name="msapplication-TileImage" content="assets/img/favicons/mstile-150x150.png">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- ===============================================-->
+    <!--    Stylesheets-->
+    <!-- ===============================================-->
+    <link data-th-href="@{/assets/css/theme.min.css}" rel="stylesheet" />
+  </head>
+
+  <body>
+    <!-- ===============================================-->
+    <!--    Main Content-->
+    <!-- ===============================================-->
+    <main class="main" id="top">
+      <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3 backdrop bg-light opacity-75" data-navbar-on-scroll="data-navbar-on-scroll">
+        <div class="container"><a class="navbar-brand" data-th-href="@{/}"><img class="d-inline-block align-top img-fluid" data-th-src="@{/assets/img/gallery/logo-icon.png}" alt="" width="50" /><span class="text-theme font-monospace fs-4 ps-2">Cosine Engine</span></a><button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+          <div class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item px-2"><a class="nav-link fw-medium active" aria-current="page" data-th-href="@{/}">Home</a></li>
+              <li class="nav-item px-2"><a class="nav-link fw-medium" href="#info-and-help">Info & Bantuan</a></li>
+              <li class="nav-item px-2"><a class="nav-link fw-medium" href="#browse-cases">Basis Kasus</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <section class="py-0" id="header">
+        <div class="bg-holder d-none d-md-block" style="background-image:url(assets/img/illustrations/hero-header.png);background-position:right top;background-size:contain;"></div>
+        <!--/.bg-holder-->
+        <div class="bg-holder d-md-none" style="background-image:url(assets/img/illustrations/hero-bg.png);background-position:right top;background-size:contain;"></div>
+        <!--/.bg-holder-->
+        <div class="container">
+          <div class="row align-items-center min-vh-75 min-vh-lg-100">
+            <div class="col-md-7 col-lg-6 col-xxl-5 py-6 text-sm-start text-center">
+              <h1 class="mt-6 mb-sm-4 display-2 fw-semi-bold lh-sm fs-4 fs-lg-5 fs-xl-6">Diagnosa BTS <br class="d-block d-lg-block" />Algoritma Cosine</h1>
+              <p class="mb-4 fs-1">Tekan tombol "Mulai Diagnosa" untuk mencoba mencari solusi dari gangguan system pada BTS</p>
             </div>
-        </nav>
-        <!-- Masthead-->
-        <header class="masthead">
-            <div class="container h-100">
-                <div class="row h-100 align-items-center justify-content-center text-center">
-                    <div class="col-lg-10 align-self-end">
-                        <h1 class="text-uppercase text-white font-weight-bold">Diagnosa Gangguan Pada BTS</h1>
-                        <hr class="divider my-4" />
-                    </div>
-                    <div class="col-lg-8 align-self-baseline">
-                        <p class="text-white-75 font-weight-light mb-5">Silahkan klik tombol "Mulai Diagnosa" Untuk memulai proses diagnosa gangguan pada BTS</p>
-                        <a class="btn btn-primary btn-xl js-scroll-trigger" data-th-href="@{survey}">Mulai Diagnosa</a>
-                    </div>
-                </div>
+          </div>
+          <div class="row flex-center h-100">
+            <div class="col-xl-9">
+              <div class="row">
+       	          	<div class="col-lg-8 align-self-baseline">
+                        <a class="btn btn-primary btn-xl js-scroll-trigger" onclick="javascript:window.surveyForm.submit()">Cari Solusi Permasalahan</a>
+		            </div>
+              </div>
+             </div>
+          </div>
+        </div>
+      </section>
+      <section class="py-5" id="info-and-help">
+        <div class="bg-holder d-none d-sm-block" style="background-image:url(assets/img/illustrations/bg.png);background-position:top left;background-size:225px 755px;margin-top:-17.5rem;"></div>
+        <!--/.bg-holder-->
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-9 mx-auto text-center mb-3">
+              <h5 class="fw-bold fs-3 fs-lg-5 lh-sm mb-3">INFO & BANTUAN</h5>
+              <p class="mb-5">Memerlukan informasi dan bantuan? Silahkan lihat penjelasan dibawah ini</p>
             </div>
-        </header>
-        <!-- Footer-->
-        <footer class="bg-light py-5">
-            <div class="container"><div class="small text-center text-muted">Copyright © 2020 - Start Bootstrap</div></div>
-        </footer>
-        <script data-th-src="@{/js/jquery-3.5.1.slim.min.js}"></script>
-        <script data-th-src="@{/js/bootstrap.bundle.min.js}"></script>
-        <script data-th-src="@{/js/jquery.easing.min.js}"></script>
-        <script data-th-src="@{/js/jquery.magnific-popup.min.js}"></script>
-        <script data-th-src="@{/js/scripts.js}"></script>
-        <script data-th-src="@{/js/all.js}"></script>
-    </body>
+          </div>
+          <div class="row flex-center h-100">
+            <div class="col-xl-9">
+              <div class="row">
+                <div class="col-md-4 mb-5">
+                  <div class="card h-100 shadow px-4 px-md-2 px-lg-3 card-span pt-6">
+                    <div class="text-center text-md-start card-hover"><img class="ps-3 icons" src="assets/img/icons/farmer.svg" height="60" alt="" />
+                      <div class="card-body">
+                        <h6 class="fw-bold fs-1 heading-color">Apa itu Cosine</h6>
+                        <p class="mt-3 mb-md-0 mb-lg-2">Algoritma Cosine adalah .....</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 mb-5">
+                  <div class="card h-100 shadow px-4 px-md-2 px-lg-3 card-span pt-6">
+                    <div class="text-center text-md-start card-hover"><img class="ps-3 icons" src="assets/img/icons/growth.svg" height="60" alt="" />
+                      <div class="card-body">
+                        <h6 class="fw-bold fs-1 heading-color">Cara mulai diagnosa</h6>
+                        <p class="mt-3 mb-md-0 mb-lg-2">Buka halaman utama, klik tombol mulai diagnosa, cheklis semua pertanyaan yg sesuai dengan gejala kasus</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 mb-5">
+                  <div class="card h-100 shadow px-4 px-md-2 px-lg-3 card-span pt-6">
+                    <div class="text-center text-md-start card-hover"><img class="ps-3 icons" src="assets/img/icons/planting.svg" height="60" alt="" />
+                      <div class="card-body">
+                        <h6 class="fw-bold fs-1 heading-color">Hubungi Kami</h6>
+                        <p class="mt-3 mb-md-0 mb-lg-2">
+                        	Telp 088888-888-000
+                        	Email abcad@email.com
+                        	Alamat jln sana sanini
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <section class="py-5" id="browse-cases">
+        <div class="bg-holder d-none d-sm-block" style="background-image:url(assets/img/illustrations/bg.png);background-position:top left;background-size:225px 755px;margin-top:-17.5rem;"></div>
+        <!--/.bg-holder-->
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-9 mx-auto text-center mb-3">
+              <h5 class="fw-bold fs-3 fs-lg-5 lh-sm mb-3">Basis Kasus</h5>
+              <p class="mb-5">Berikut daftar beberapa kasus yang telah di petakan sebelumnya.</p>
+            </div>
+          </div>
+          <div class="row flex-center h-100">
+            <div class="col-xl-9">
+              <div class="row">
+                <table style="width: 100%; border:solid silver 1px;border-collapse: collapse;">
+               	<thead>
+               	<tr>
+               		<th align="center">No</th>
+               		<th align="center">Jenis Gangguan</th>
+               		<th align="center">Waktu Perbaikan</th>
+               		<th align="center">Gejala</th>
+               		<th align="center">Solusi</th>
+               	</tr>
+               	</thead>
+               	<tbody>
+               	<tr data-th-each="case:${cases}">
+               		<td valign="top" align="center" data-th-text="${case.number}"/>
+               		<td style="vertical-align: top; text-align: left;">
+               			<ul data-th-each="disruption:${case.disruptions}">
+               				<li data-th-if="${disruption.enabled}" data-th-text="${disruption.gangguanNote}"/>
+               			</ul>
+               		</td>
+               		<td style="vertical-align: top; text-align: left;" data-th-text="${case.reparationTime}"/>
+               		<td style="vertical-align: top; text-align: left;">
+               			<ul data-th-each="symtom:${case.symtoms}">
+               				<li data-th-if="${symtom.enabled}" data-th-text="${symtom.gejalaNote}"/>
+               			</ul>
+               		</td>
+               		<td valign="top" style="text-align: left;">
+               			<ul data-th-each="solusion:${case.solusions}">
+               				<li data-th-if="${solusion.enabled}" data-th-text="${solusion.solusiNote}"/>
+               			</ul>
+               		</td>
+               	</tr>
+               	</tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <section class="py-5" id="survey">
+        <div class="bg-holder d-none d-sm-block" style="background-image:url(assets/img/illustrations/bg.png);background-position:top left;background-size:225px 755px;margin-top:-17.5rem;"></div>
+        <!--/.bg-holder-->
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-9 mx-auto text-center mb-3">
+              <h5 class="fw-bold fs-3 fs-lg-5 lh-sm mb-3">Diagnosa BTS</h5>
+              <p class="mb-5">Silahkan centang gejala yang dialami pada BTS</p>
+            </div>
+          </div>
+          <div class="row flex-center h-100">
+            <div class="col-xl-9">
+              <div class="row">
+				<form id="surveyForm" name="surveyForm" data-th-action="@{/diagnosing}" method="post">
+					<table style="border: none;width: 55%">
+					<tbody>
+						<tr data-th-each="quetion:${quetions}">
+							<td data-th-text="'Apakah '+${quetion.note}+' ?'"/>
+							<td><input type="checkbox" name="answers" data-th-value="${quetion.id}"/></td>
+						</tr>
+					</tbody>
+					</table>
+					&nbsp;&nbsp;&nbsp;
+					<div class="col-lg-8 align-self-baseline">
+                        <a class="btn btn-primary btn-xl js-scroll-trigger" onclick="javascript:window.surveyForm.submit()">Cari Solusi Permasalahan</a>
+                    </div>
+				</form>
+				<br/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+    </main><!-- ===============================================-->
+    <!--    End of Main Content-->
+    <!-- ===============================================-->
+
+
+    <!-- ===============================================-->
+    <!--    JavaScripts-->
+    <!-- ===============================================-->
+    <script data-th-src="@{/vendors/@popperjs/popper.min.js}"></script>
+    <script data-th-src="@{/vendors/bootstrap/bootstrap.min.js}"></script>
+    <script data-th-src="@{/vendors/is/is.min.js}"></script>
+    <script data-th-src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
+    <script data-th-src="@{/assets/js/theme.js}"></script>
+  </body>
+
 </html>

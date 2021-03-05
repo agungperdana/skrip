@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.kratonsolution.skrip.leon.model.Gejala;
+import com.kratonsolution.skrip.leon.model.Kasus;
 
 import io.jsondb.JsonDBTemplate;
 
@@ -24,7 +25,14 @@ public class LandingPage {
 	private JsonDBTemplate temp;
 	
 	@GetMapping("/")
-	public String landing() {
+	public String landing(Model model) {
+		
+		List<Gejala> quetions = temp.findAll(Gejala.class);
+		Collections.sort(quetions,(a, b)-> a.getOnScore() - b.getOnScore());
+		
+		model.addAttribute("quetions", quetions);
+		model.addAttribute("cases", temp.findAll(Kasus.class));
+
 		return "index";
 	}
 	
