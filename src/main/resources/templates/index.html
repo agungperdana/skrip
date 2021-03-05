@@ -5,15 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- ===============================================-->
-    <!--    Document Title-->
-    <!-- ===============================================-->
     <title>Cosine Engine</title>
-
-    <!-- ===============================================-->
-    <!--    Favicons-->
-    <!-- ===============================================-->
     <link rel="apple-touch-icon" sizes="180x180" data-th-href="@{/assets/img/favicons/apple-touch-icon.png}">
     <link rel="icon" type="image/png" sizes="32x32" data-th-href="@{/assets/img/favicons/favicon-32x32.png}">
     <link rel="icon" type="image/png" sizes="16x16" data-th-href="@{/assets/img/favicons/favicon-16x16.png}">
@@ -22,10 +14,6 @@
     <link rel="stylesheet" data-th-href="@{/assets/css/google-apis-cevo.css}">
     <meta name="msapplication-TileImage" content="assets/img/favicons/mstile-150x150.png">
     <meta name="theme-color" content="#ffffff">
-
-    <!-- ===============================================-->
-    <!--    Stylesheets-->
-    <!-- ===============================================-->
     <link data-th-href="@{/assets/css/theme.min.css}" rel="stylesheet" />
   </head>
 
@@ -45,27 +33,23 @@
           </div>
         </div>
       </nav>
-      <section class="py-0" id="header">
+      <section class="py-5" id="header">
         <div class="bg-holder d-none d-md-block" style="background-image:url(assets/img/illustrations/hero-header.png);background-position:right top;background-size:contain;"></div>
         <!--/.bg-holder-->
         <div class="bg-holder d-md-none" style="background-image:url(assets/img/illustrations/hero-bg.png);background-position:right top;background-size:contain;"></div>
         <!--/.bg-holder-->
+  
         <div class="container">
           <div class="row align-items-center min-vh-75 min-vh-lg-100">
             <div class="col-md-7 col-lg-6 col-xxl-5 py-6 text-sm-start text-center">
               <h1 class="mt-6 mb-sm-4 display-2 fw-semi-bold lh-sm fs-4 fs-lg-5 fs-xl-6">Diagnosa BTS <br class="d-block d-lg-block" />Algoritma Cosine</h1>
               <p class="mb-4 fs-1">Tekan tombol "Mulai Diagnosa" untuk mencoba mencari solusi dari gangguan system pada BTS</p>
+              <a id="start-diagnosing" style="cursor: pointer;" class="btn btn-lg btn-success px-6" role="button" href="#survey">Mulai Diagnosa</a>
+            	<a style="cursor: pointer;" href="#survey">&nbsp;</a>
             </div>
+            <a style="cursor: pointer;" href="#survey">&nbsp;</a>
           </div>
-          <div class="row flex-center h-100">
-            <div class="col-xl-9">
-              <div class="row">
-       	          	<div class="col-lg-8 align-self-baseline">
-                        <a class="btn btn-primary btn-xl js-scroll-trigger" onclick="javascript:window.surveyForm.submit()">Cari Solusi Permasalahan</a>
-		            </div>
-              </div>
-             </div>
-          </div>
+          <a style="cursor: pointer;" href="#survey">&nbsp;</a>
         </div>
       </section>
       <section class="py-5" id="info-and-help">
@@ -205,20 +189,7 @@
           </div>
         </div>
       </section>
-      
-    </main><!-- ===============================================-->
-    <!--    End of Main Content-->
-    <!-- ===============================================-->
-
-
-    <!-- ===============================================-->
-    <!--    JavaScripts-->
-    <!-- ===============================================-->
-    <script data-th-src="@{/vendors/@popperjs/popper.min.js}"></script>
-    <script data-th-src="@{/vendors/bootstrap/bootstrap.min.js}"></script>
-    <script data-th-src="@{/vendors/is/is.min.js}"></script>
-    <script data-th-src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
-    <script data-th-src="@{/assets/js/theme.js}"></script>
-  </body>
+    </main>
+   </body>
 
 </html>
