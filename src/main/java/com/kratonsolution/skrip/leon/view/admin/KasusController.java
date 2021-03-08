@@ -2,6 +2,7 @@ package com.kratonsolution.skrip.leon.view.admin;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -139,6 +140,59 @@ public class KasusController {
 
 		model.addAttribute("kasus", db.findById(id, Kasus.class));
 		return "kasus-edit";
+	}
+	
+	@PostMapping("/admin/kasus-edit")
+	public String edit(@RequestParam("id") String id, 
+			@RequestParam("no") Optional<Integer> no, 
+			@RequestParam("swp") Optional<String> swp,
+			@RequestParam("disruptions") Optional<String[]> disruptionsOpt, 
+			@RequestParam("symtoms") Optional<String[]> symtomsOpt,
+			@RequestParam("solusions") Optional<String[]> solutionsOpt) {
+
+		Kasus kasus = db.findById(id, Kasus.class);
+		if(kasus != null) {
+
+			kasus.setNumber(no.orElse(1000));
+			kasus.setReparationTime(swp.orElse(null));
+
+			kasus.getSymtoms().forEach(symtom -> {
+				
+				symtom.setEnabled(symtomsOpt.isPresent() && Arrays.asList(symtomsOpt.get()).stream().anyMatch(p->p.equals(symtom.getGejalaID())));
+			});
+			
+			kasus.getDisruptions().forEach(disrupt -> {
+				
+				disrupt.setEnabled(disruptionsOpt.isPresent() && Arrays.asList(disruptionsOpt.get()).stream().anyMatch(p->p.equals(disrupt.getGangguanID())));
+			});
+			
+			kasus.getSolusions().forEach(solusion ->{
+				
+				solusion.setEnabled(solutionsOpt.isPresent() && Arrays.asList(solutionsOpt.get()).stream().anyMatch(p->p.equals(solusion.getSolusiID())));
+			});
+			
+			//Rebuild tokens
+			StringBuilder tokens = new StringBuilder();
+			
+			List<Gejala> symtoms = db.findAll(Gejala.class);
+			Collections.sort(symtoms, (a, b) -> a.getOnScore() - b.getOnScore());
+			
+			symtoms.forEach(symtom -> {
+				
+				if(kasus.getSymtoms().stream().anyMatch(p->p.getGejalaID().equals(symtom.getId()) && p.isEnabled())) {
+					tokens.append(symtom.getOnScore());
+				}
+				else {
+					tokens.append(symtom.getOffScore());
+				}
+			});
+			
+			kasus.setToken(tokens.toString());
+			
+			db.save(kasus, Kasus.class);
+		}
+
+		return HOME;
 	}
 
 	@GetMapping("/admin/kasus-delete")

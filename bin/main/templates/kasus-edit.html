@@ -53,7 +53,7 @@
           </div>
 
           <div class="pane">
-          	<form data-th-action="@{/admin/kasus-edit?id=}+${kasus.bit}" method="POST">
+          	<form data-th-action="@{/admin/kasus-edit?id=}+${kasus.id}" method="POST">
           	<div class="toolbar-actions">
           		<button class="btn btn-negative" onclick="javascript:window.location='/admin/kasus-home'">
         			<span class="icon icon-cancel-circled"></span>
@@ -69,6 +69,14 @@
               <tr>
               	<td>Tokens :</td>
               	<td width="90%"><input size="50" data-th-value="${kasus.token}" disabled="disabled"/></td>
+              </tr>
+              <tr>
+              	<td>Nomor Kasus:</td>
+              	<td width="90%"><input name="no" size="30" data-th-value="${kasus.number}"/></td>
+              </tr>
+              <tr>
+              	<td>Standar Waktu Penanganan:</td>
+              	<td width="90%"><input name="swp" size="75" data-th-value="${kasus.reparationTime}"/></td>
               </tr>
               <tr><td colspan="2">&nbsp;</td></tr>
               <tr>
@@ -86,12 +94,7 @@
 		              <tbody>
 		                <tr data-th-each="gejala:${kasus.symtoms}">
 		                	<td>
-		                		<select name="gej-en">
-		                			<option value="false" data-th-selected="${!gejala.enabled}">Tidak</option>
-		                			<option value="true" data-th-selected="${gejala.enabled}">Ya</option>
-		                		</select>
-		                		<input type="hidden" name="gej-id" data-th-value="${gejala.gejalaID}"/>
-		                		<input type="hidden" name="gej-note" data-th-value="${gejala.gejalaNote}"/>
+		                		<input type="checkbox" name="symtoms" data-th-checked="${gejala.enabled}" data-th-value="${gejala.gejalaID}"/>
 		                	</td>	
 		                  	<td data-th-text="${gejala.gejalaNote}"/>
 		                </tr>
@@ -115,12 +118,7 @@
 		              <tbody>
 		                <tr data-th-each="gangguan:${kasus.disruptions}">
 		                	<td>
-		                		<select name="gang-en">
-		                			<option value="false" data-th-selected="${!gangguan.enabled}">Tidak</option>
-		                			<option value="true" data-th-selected="${gangguan.enabled}">Ya</option>
-		                		</select>
-		                		<input type="hidden" name="gang-id" data-th-value="${gangguan.gangguanID}"/>
-		                		<input type="hidden" name="gang-note" data-th-value="${gangguan.gangguanNote}"/>
+		                		<input type="checkbox" name="disruptions" data-th-checked="${gangguan.enabled}" data-th-value="${gangguan.gangguanID}"/>
 		                	</td>	
 		                  	<td data-th-text="${gangguan.gangguanNote}"/>
 		                </tr>
@@ -142,12 +140,7 @@
 		              <tbody>
 		                <tr data-th-each="solusi:${kasus.solusions}">
 		                	<td>
-		                		<select name="sol-en">
-		                			<option value="false" data-th-selected="${!solusi.enabled}">Tidak</option>
-		                			<option value="true" data-th-selected="${solusi.enabled}">Ya</option>
-		                		</select>
-		                		<input type="hidden" name="sol-id" data-th-value="${solusi.solusiID}"/>
-		                		<input type="hidden" name="sol-note" data-th-value="${solusi.solusiNote}"/>
+		                		<input type="checkbox" name="solusions" data-th-checked="${solusi.enabled}" data-th-value="${solusi.solusiID}"/>
 		                	</td>	
 		                  	<td data-th-text="${solusi.solusiNote}"/>
 		                </tr>
