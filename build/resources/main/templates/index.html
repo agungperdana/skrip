@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cosine Engine</title>
+    <link rel="apple-touch-icon" sizes="180x180" data-th-href="@{/assets/img/favicons/apple-touch-icon.png}">
+    <link rel="icon" type="image/png" sizes="32x32" data-th-href="@{/assets/img/favicons/favicon-32x32.png}">
+    <link rel="icon" type="image/png" sizes="16x16" data-th-href="@{/assets/img/favicons/favicon-16x16.png}">
+    <link rel="shortcut icon" type="image/x-icon" data-th-href="@{/assets/img/favicons/favicon.ico}">
+    <link rel="manifest" data-th-href="@{/assets/img/favicons/manifest.json}">
+    <link rel="stylesheet" data-th-href="@{/assets/css/google-apis-cevo.css}">
+    <meta name="msapplication-TileImage" content="assets/img/favicons/mstile-150x150.png">
+    <meta name="theme-color" content="#ffffff">
+    <link data-th-href="@{/assets/css/theme.min.css}" rel="stylesheet" />
+  </head>
+
+  <body>
+    <!-- ===============================================-->
+    <!--    Main Content-->
+    <!-- ===============================================-->
+    <main class="main" id="top">
+      <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3 backdrop bg-light opacity-75" data-navbar-on-scroll="data-navbar-on-scroll">
+        <div class="container"><a class="navbar-brand" data-th-href="@{/}"><img class="d-inline-block align-top img-fluid" data-th-src="@{/assets/img/gallery/logo-icon.png}" alt="" width="50" /><span class="text-theme font-monospace fs-4 ps-2">Cosine Engine</span></a><button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+          <div class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item px-2"><a class="nav-link fw-medium active" aria-current="page" data-th-href="@{/}">Home</a></li>
+              <li class="nav-item px-2"><a class="nav-link fw-medium" href="#info-and-help">Info & Bantuan</a></li>
+              <li class="nav-item px-2"><a class="nav-link fw-medium" href="#browse-cases">Basis Kasus</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <section class="py-5" id="header">
+        <div class="bg-holder d-none d-md-block" style="background-image:url(assets/img/illustrations/hero-header.png);background-position:right top;background-size:contain;"></div>
+        <!--/.bg-holder-->
+        <div class="bg-holder d-md-none" style="background-image:url(assets/img/illustrations/hero-bg.png);background-position:right top;background-size:contain;"></div>
+        <!--/.bg-holder-->
+  
+        <div class="container">
+          <div class="row align-items-center min-vh-75 min-vh-lg-100">
+            <div class="col-md-7 col-lg-6 col-xxl-5 py-6 text-sm-start text-center">
+              <h1 class="mt-6 mb-sm-4 display-2 fw-semi-bold lh-sm fs-4 fs-lg-5 fs-xl-6">Diagnosa BTS <br class="d-block d-lg-block" />Algoritma Cosine</h1>
+              <p class="mb-4 fs-1">Tekan tombol "Mulai Diagnosa" untuk mencoba mencari solusi dari gangguan system pada BTS</p>
+              <a id="start-diagnosing" style="cursor: pointer;" class="btn btn-lg btn-success px-6" role="button" href="#survey">Mulai Diagnosa</a>
+            	<a style="cursor: pointer;" href="#survey">&nbsp;</a>
+            </div>
+            <a style="cursor: pointer;" href="#survey">&nbsp;</a>
+          </div>
+          <a style="cursor: pointer;" href="#survey">&nbsp;</a>
+        </div>
+      </section>
+      <section class="py-5" id="info-and-help">
+        <div class="bg-holder d-none d-sm-block" style="background-image:url(assets/img/illustrations/bg.png);background-position:top left;background-size:225px 755px;margin-top:-17.5rem;"></div>
+        <!--/.bg-holder-->
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-9 mx-auto text-center mb-3">
+              <h5 class="fw-bold fs-3 fs-lg-5 lh-sm mb-3">INFO & BANTUAN</h5>
+              <p class="mb-5">Memerlukan informasi dan bantuan? Silahkan lihat penjelasan dibawah ini</p>
+            </div>
+          </div>
+          <div class="row flex-center h-100">
+            <div class="col-xl-9">
+              <div class="row">
+                <div class="col-md-4 mb-5">
+                  <div class="card h-100 shadow px-4 px-md-2 px-lg-3 card-span pt-6">
+                    <div class="text-center text-md-start card-hover"><img class="ps-3 icons" src="assets/img/icons/farmer.svg" height="60" alt="" />
+                      <div class="card-body">
+                        <h6 class="fw-bold fs-1 heading-color">Apa itu Cosine</h6>
+                        <p class="mt-3 mb-md-0 mb-lg-2">Algoritma Cosine adalah .....</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 mb-5">
+                  <div class="card h-100 shadow px-4 px-md-2 px-lg-3 card-span pt-6">
+                    <div class="text-center text-md-start card-hover"><img class="ps-3 icons" src="assets/img/icons/growth.svg" height="60" alt="" />
+                      <div class="card-body">
+                        <h6 class="fw-bold fs-1 heading-color">Cara mulai diagnosa</h6>
+                        <p class="mt-3 mb-md-0 mb-lg-2">Buka halaman utama, klik tombol mulai diagnosa, cheklis semua pertanyaan yg sesuai dengan gejala kasus</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 mb-5">
+                  <div class="card h-100 shadow px-4 px-md-2 px-lg-3 card-span pt-6">
+                    <div class="text-center text-md-start card-hover"><img class="ps-3 icons" src="assets/img/icons/planting.svg" height="60" alt="" />
+                      <div class="card-body">
+                        <h6 class="fw-bold fs-1 heading-color">Hubungi Kami</h6>
+                        <p class="mt-3 mb-md-0 mb-lg-2">
+                        	Telp 088888-888-000
+                        	Email abcad@email.com
+                        	Alamat jln sana sanini
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <section class="py-5" id="browse-cases">
+        <div class="bg-holder d-none d-sm-block" style="background-image:url(assets/img/illustrations/bg.png);background-position:top left;background-size:225px 755px;margin-top:-17.5rem;"></div>
+        <!--/.bg-holder-->
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-9 mx-auto text-center mb-3">
+              <h5 class="fw-bold fs-3 fs-lg-5 lh-sm mb-3">Basis Kasus</h5>
+              <p class="mb-5">Berikut daftar beberapa kasus yang telah di petakan sebelumnya.</p>
+            </div>
+          </div>
+          <div class="row flex-center h-100">
+            <div class="col-xl-9">
+              <div class="row">
+                <table style="width: 100%; border:solid silver 1px;border-collapse: collapse;">
+               	<thead>
+               	<tr>
+               		<th align="center">No</th>
+               		<th align="center">Jenis Gangguan</th>
+               		<th align="center">Waktu Perbaikan</th>
+               		<th align="center">Gejala</th>
+               		<th align="center">Solusi</th>
+               	</tr>
+               	</thead>
+               	<tbody>
+               	<tr data-th-each="case:${cases}">
+               		<td valign="top" align="center" data-th-text="${case.number}"/>
+               		<td style="vertical-align: top; text-align: left;">
+               			<ul data-th-each="disruption:${case.disruptions}">
+               				<li data-th-if="${disruption.enabled}" data-th-text="${disruption.gangguanNote}"/>
+               			</ul>
+               		</td>
+               		<td style="vertical-align: top; text-align: left;" data-th-text="${case.reparationTime}"/>
+               		<td style="vertical-align: top; text-align: left;">
+               			<ul data-th-each="symtom:${case.symtoms}">
+               				<li data-th-if="${symtom.enabled}" data-th-text="${symtom.gejalaNote}"/>
+               			</ul>
+               		</td>
+               		<td valign="top" style="text-align: left;">
+               			<ul data-th-each="solusion:${case.solusions}">
+               				<li data-th-if="${solusion.enabled}" data-th-text="${solusion.solusiNote}"/>
+               			</ul>
+               		</td>
+               	</tr>
+               	</tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <section class="py-5" id="survey">
+        <div class="bg-holder d-none d-sm-block" style="background-image:url(assets/img/illustrations/bg.png);background-position:top left;background-size:225px 755px;margin-top:-17.5rem;"></div>
+        <!--/.bg-holder-->
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-9 mx-auto text-center mb-3">
+              <h5 class="fw-bold fs-3 fs-lg-5 lh-sm mb-3">Diagnosa BTS</h5>
+              <p class="mb-5">Silahkan centang gejala yang dialami pada BTS</p>
+            </div>
+          </div>
+          <div class="row flex-center h-100">
+            <div class="col-xl-9">
+              <div class="row">
+				<form id="surveyForm" name="surveyForm" data-th-action="@{/diagnosing}" method="post">
+					<table style="border: none;width: 55%">
+					<tbody>
+						<tr data-th-each="quetion:${quetions}">
+							<td data-th-text="'Apakah '+${quetion.note}+' ?'"/>
+							<td><input type="checkbox" name="answers" data-th-value="${quetion.id}"/></td>
+						</tr>
+					</tbody>
+					</table>
+					&nbsp;&nbsp;&nbsp;
+					<div class="col-lg-8 align-self-baseline">
+                        <a class="btn btn-primary btn-xl js-scroll-trigger" onclick="javascript:window.surveyForm.submit()">Cari Solusi Permasalahan</a>
+                    </div>
+				</form>
+				<br/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+   </body>
+
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>COSIN APP V-1.0</title>
+    <link rel="stylesheet" data-th-href="@{/photon/dist/css/photon.min.css}"/>
+  </head>
+  <body>
+    <div class="window">
+
+      <header class="toolbar toolbar-header">
+        <h1 class="title">PENGATURAN DATA GANGGUAN</h1>
+      </header>
+
+      <!-- Your app's content goes inside .window-content -->
+      <div class="window-content">
+        <div class="pane-group">
+          <div class="pane pane-sm sidebar">
+            <nav class="nav-group">
+              <h5 class="nav-group-title">ADMINISTRASI</h5>
+              <span class="nav-group-item active">
+                <span class="icon icon-home"></span>
+                <a style="cursor: pointer;" data-th-href="@{/admin/gangguan-home}">Gangguan</a>
+              </span>
+              <span class="nav-group-item ">
+                <span class="icon icon-light-up"></span>
+                <a style="cursor: pointer;" data-th-href="@{/admin/gejala-home}">Gejala</a>
+              </span>
+              <span class="nav-group-item">
+                <span class="icon icon-download"></span>
+                <a style="cursor: pointer;" data-th-href="@{/admin/solusi-home}">Solusi</a>
+              </span>
+              <span class="nav-group-item">
+                <span class="icon icon-monitor"></span>
+                <a style="cursor: pointer;" data-th-href="@{/admin/kasus-home}">Kasus</a>
+              </span>
+              <span class="nav-group-item">
+                <span class="icon icon-flashlight"></span>
+                <a style="cursor: pointer;" data-th-href="@{/admin/draft-kasus-home}">Draft Kasus</a>
+              </span>
+            </nav>
+          </div>
+
+          <div class="pane">
+          	<form data-th-action="@{/admin/gangguan-edit?id=}+${gangguan.id}" method="POST">
+          	<div class="toolbar-actions">
+          		<button class="btn btn-negative" type="reset" onclick="javascript:window.location='/admin/gangguan-home'">
+        			<span class="icon icon-cancel-circled"></span>
+        			Batalkan
+      			</button>
+      			<button type="submit" class="btn btn-positive">
+        			<span class="icon icon-plus-circled"></span>
+        			Simpan
+      			</button>
+          	</div>
+			<table>
+              <tbody>
+              <tr>
+              	<td>No Urut :</td>
+              	<td width="85%"><input name="index" size="10" data-th-value="${gangguan.index}"/></td>
+              </tr>
+              <tr>
+              	<td>Keterangan :</td>
+              	<td width="85%"><input name="note" width="75%" data-th-value="${gangguan.note}"/></td>
+              </tr>
+               </tbody>
+              </table>
+              </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

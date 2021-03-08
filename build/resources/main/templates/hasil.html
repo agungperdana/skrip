@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cosine Engine</title>
+    <link rel="apple-touch-icon" sizes="180x180" data-th-href="@{/assets/img/favicons/apple-touch-icon.png}">
+    <link rel="icon" type="image/png" sizes="32x32" data-th-href="@{/assets/img/favicons/favicon-32x32.png}">
+    <link rel="icon" type="image/png" sizes="16x16" data-th-href="@{/assets/img/favicons/favicon-16x16.png}">
+    <link rel="shortcut icon" type="image/x-icon" data-th-href="@{/assets/img/favicons/favicon.ico}">
+    <link rel="manifest" data-th-href="@{/assets/img/favicons/manifest.json}">
+    <link rel="stylesheet" data-th-href="@{/assets/css/google-apis-cevo.css}">
+    <meta name="msapplication-TileImage" content="assets/img/favicons/mstile-150x150.png">
+    <meta name="theme-color" content="#ffffff">
+    <link data-th-href="@{/assets/css/theme.min.css}" rel="stylesheet" />
+  </head>
+
+  <body>
+    <!-- ===============================================-->
+    <!--    Main Content-->
+    <!-- ===============================================-->
+    <main class="main" id="top">
+      <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3 backdrop bg-light opacity-75" data-navbar-on-scroll="data-navbar-on-scroll">
+        <div class="container"><a class="navbar-brand" data-th-href="@{/}"><img class="d-inline-block align-top img-fluid" data-th-src="@{/assets/img/gallery/logo-icon.png}" alt="" width="50" /><span class="text-theme font-monospace fs-4 ps-2">Cosine Engine</span></a><button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+          <div class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item px-2"><a class="nav-link fw-medium active" aria-current="page" data-th-href="@{/}">Home</a></li>
+              <li class="nav-item px-2"><a class="nav-link fw-medium" data-th-href="@{/}">Info & Bantuan</a></li>
+              <li class="nav-item px-2"><a class="nav-link fw-medium" data-th-href="@{/}">Basis Kasus</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <section class="z-index-1 cta" id="result">
+        <div class="container">
+          <div class="row flex-center">
+            <div class="col-12">
+              <div class="card shadow h-100 py-5">
+                <div class="card-body text-center">
+                  <h1 class="fw-semi-bold mb-4">Hasil Diagnosa &nbsp;<span class="text-success">Kerusakan BTS</span> &nbsp;</h1>
+					<table style="border: none;width: 80%">
+                	<tbody>
+                  		<tr>
+                  			<td width="30%">Tingkat Kemiripan</td>
+                  			<td>:</td>
+                  			<td style="vertical-align: top; color: green; font-weight: bold;" data-th-text="${match}"/>
+                  		</tr>
+                  		<tr>
+                  			<td>Perkiraan Lama Perbaikan</td>
+                  			<td>:</td>
+                  			<td style="vertical-align: top; color: green; font-weight: bold;" data-th-text="${reparationTime}"/>
+                  		</tr>
+                  		<tr>
+                  			<td style="vertical-align: top;">Jenis Gangguan</td>
+                  			<td style="vertical-align: top;">:</td>
+                  			<td align="left" style="vertical-align: top; color: green; font-weight: bold;">
+                  				<ul data-th-each="disruption:${disruptions}">
+                  					<li data-th-if="${disruption.enabled}" data-th-text="${disruption.gangguanNote}"/>
+                  				</ul>
+                  			</td>
+                  		</tr>
+                  		<tr>
+                  			<td style="vertical-align: top;">Solusi</td>
+                  			<td style="vertical-align: top;">:</td>
+                  			<td align="left" style="vertical-align: top; color: green; font-weight: bold;">
+                  				<ul data-th-each="solusion:${solusions}">
+                  					<li data-th-if="${solusion.enabled}" data-th-text="${solusion.solusiNote}"/>
+                  				</ul>
+                  			</td>
+                  		</tr>
+                	</tbody>
+                	</table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div><!-- end of .container-->
+      </section>
+    </main>
+   </body>
+
+</html>
